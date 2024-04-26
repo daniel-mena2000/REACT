@@ -1,0 +1,21 @@
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.datosApi{
+  background-color: #26a;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.padreArrays{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
