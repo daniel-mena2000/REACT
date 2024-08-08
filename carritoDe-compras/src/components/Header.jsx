@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
 
-export function Header({cart}) {
+export function Header({cart, eliminarItem, incrementarCantidad, decrementarCantidad}) {
 
 
-//Cuando utilizas `useMemo`, estás indicando a React que memorice el valor devuelto por una función y solo lo recalcule cuando las dependencias especificadas cambien. Esto es útil cuando tienes una función que se ejecuta dentro de un componente de React y produce un valor computacionalmente intensivo. Al memoizar este valor, puedes evitar que se recalcule cada vez que el componente se vuelva a renderizar, siempre y cuando las dependencias no cambien. 
+//Cuando utilizas `useMemo`, estás indicando a React que memorice el valor devuelto por una función y solo lo recalcule cuando las dependencias especificadas cambien. Esto es útil cuando tienes una función que se ejecuta dentro de un componente de React y produce un valor computacionalmente intensivo. Al memoizar este valor, puedes evitar que se recalcule cada vez que el componente se vuelva a renderizar, siempre y cuando las dependencias no cambien.
 // Debes mandar llamar las funciones sin parentesis
 // State derivado
     const isEmpty = useMemo (() => cart.length === 0, [cart]);
@@ -22,7 +22,7 @@ export function Header({cart}) {
                     </a>
                 </div>
                 <nav className="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
-                    <div 
+                    <div
                         className="carrito"
                     >
                         <img className="img-fluid" src="./public/img/carrito.png" alt="imagen carrito" />
@@ -58,6 +58,7 @@ export function Header({cart}) {
                                             <button
                                                 type="button"
                                                 className="btn btn-dark"
+                                                onClick={() => decrementarCantidad(item.id)}
                                             >
                                                 -
                                             </button>
@@ -65,6 +66,7 @@ export function Header({cart}) {
                                             <button
                                                 type="button"
                                                 className="btn btn-dark"
+                                                onClick={() => incrementarCantidad(item.id)}
                                             >
                                                 +
                                             </button>
@@ -73,6 +75,7 @@ export function Header({cart}) {
                                             <button
                                                 className="btn btn-danger"
                                                 type="button"
+                                                onClick={() => eliminarItem(item.id)}
                                             >
                                                 X
                                             </button>

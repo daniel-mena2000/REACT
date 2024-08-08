@@ -1,32 +1,47 @@
-import { useEffect, useState } from 'react'
 import './App.css';
-import { taskDataP } from './data.js';
-import { ListTask } from './components/ListTask.jsx';
-import { Form } from './components/Form.jsx';
+import { dbGuitar } from './data/dataGuitar.js';
+import { Header } from './components/Header.jsx';
+import { Card } from './components/Card.jsx';
+import { useEffect, useState } from 'react';
 function App() {
 
-  const [tasks, setTask] = useState([]);
+const [data, setData] = useState([]);
+const [cart, setCart] = useState([]);
 
-  useEffect(()=>{
-    setTask(taskDataP);
-  },[])
+useEffect(()=>{
+  setData(dbGuitar)
+},[])
+function agregarCarrito(item) {
 
-function agregarTareas(tareas){
-  setTask([...tasks, {
-      title: tareas.title,
-      id: tasks.length,
-      description: tareas.description
-  }])
-}
-
-function eliminarTarea(tareaDeletId) {
-    setTask(tasks.filter(item => item.id !== tareaDeletId))
+const itemExisted = cart.findIndex(itemGuitar => itemGuitar.id === item.id);
+    if (itemExisted >= 0) {
+        const updateCart = [...cart];
+        updateCart[itemExisted].cantidad ++;
+        setCart(updateCart)
+   }else{
+    item.cantidad = 1;
+    setCart([...cart, item])
+   }
 }
 return(
   <>
-  <h1>Lista de tareas</h1>
-  <Form agregarTareas={agregarTareas}/>
-  <ListTask tasks={tasks} eliminarTarea={eliminarTarea}/>
+  <Header cart={cart}/>
+
+  <main className='container-xl mt-5'>
+  <h2 className="text-center">Nuestra Colección</h2>
+  <div className='row mt-5'>
+    {data.map(item => (
+      <Card key={item.id} info={item} agregarCarrito={agregarCarrito}/>
+    ))}
+
+  </div>
+  </main>
+
+  <footer className="bg-dark mt-5 py-5">
+      <div className="container-xl">
+          <p className="text-white text-center fs-4 mt-4 m-md-0">GuitarLA - Todos los derechos Reservados</p>
+      </div>
+  </footer>
   </>
 )
 
