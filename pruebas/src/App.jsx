@@ -1,47 +1,74 @@
-import './App.css';
-import { dbGuitar } from './data/dataGuitar.js';
-import { Header } from './components/Header.jsx';
-import { Card } from './components/Card.jsx';
 import { useEffect, useState } from 'react';
+import './App.css';
+import { Header } from './components/Header.jsx';
+import { Item } from './components/Item.jsx';
+import {dbGuitar} from './data/dataGuitar.js'
 function App() {
 
-const [data, setData] = useState([]);
-const [cart, setCart] = useState([]);
-
+const [guitar, setGuitar] = useState([])
+const [cart, setCart] = useState([])
 useEffect(()=>{
-  setData(dbGuitar)
+    setGuitar(dbGuitar)
 },[])
-function agregarCarrito(item) {
 
-const itemExisted = cart.findIndex(itemGuitar => itemGuitar.id === item.id);
-    if (itemExisted >= 0) {
-        const updateCart = [...cart];
-        updateCart[itemExisted].cantidad ++;
-        setCart(updateCart)
-   }else{
-    item.cantidad = 1;
-    setCart([...cart, item])
-   }
+function agregarCart(product) {
+    const productoExistente = cart.findIndex(item => item.id === product.id)
+    if (productoExistente >= 0) {
+        const aumentarCantidad = [...cart];
+        aumentarCantidad[productoExistente].cantidad ++
+        setCart(aumentarCantidad)
+    }else{
+        product.cantidad = 1
+        setCart([...cart, product])
+    }
 }
+
+function aumnetarCantidad(aumentarId) {
+
+  const verificarSuma = cart.map(item => {
+        if (item.id === aumentarId) {
+            return{
+                ...item,
+                cantidad: item.cantidad + 1
+            }
+        }
+        return item;
+    })
+    setCart(verificarSuma)
+}
+
+
+function decrementarCantidad(aumentarId) {
+
+    const verificarSuma = cart.map(item => {
+          if (item.id === aumentarId) {
+              return{
+                  ...item,
+                  cantidad: item.cantidad - 1
+              }
+          }
+          return item;
+      })
+      setCart(verificarSuma)
+  }
+
+function eliminarProducto(id) {
+    setCart(cart.filter(item => item.id !== id))
+}
+
 return(
   <>
-  <Header cart={cart}/>
+    <Header guitarCart={cart} aumentar={aumnetarCantidad} restar={decrementarCantidad} quitar={eliminarProducto}/>
 
-  <main className='container-xl mt-5'>
-  <h2 className="text-center">Nuestra Colección</h2>
-  <div className='row mt-5'>
-    {data.map(item => (
-      <Card key={item.id} info={item} agregarCarrito={agregarCarrito}/>
-    ))}
+    <main className="container-xl mt-5">
+        <h2 className="text-center">Nuestra Colección</h2>
 
-  </div>
-  </main>
-
-  <footer className="bg-dark mt-5 py-5">
-      <div className="container-xl">
-          <p className="text-white text-center fs-4 mt-4 m-md-0">GuitarLA - Todos los derechos Reservados</p>
-      </div>
-  </footer>
+        <div className="row mt-5">
+            {guitar.map(item => (
+            <Item key={item.id} item={item} agregarCart={agregarCart}/>
+            ))}
+        </div>
+        </main>
   </>
 )
 

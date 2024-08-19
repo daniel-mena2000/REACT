@@ -4,11 +4,18 @@ import { Card } from './components/Card.jsx'
 import './App.css'
 import { db } from './data/data.js'
 function App() {
+// - localStorage.getItem('cart'): Esta línea intenta obtener el valor asociado a la clave 'cart' desde localStorage. Si existe, lo devuelve como una cadena JSON.
+// - JSON.parse(localStorageCart): Si se encontró algo en localStorage, lo convierte de una cadena JSON a un array de objetos (los elementos del carrito).
+// -Si no hay nada en localStorage (null): Devuelve un array vacío [] como valor inicial del carrito.
+    const initialCart = () => {
+        const localStorageCart = localStorage.getItem('cart');
 
+        return localStorageCart ? JSON.parse(localStorageCart) : []
+    }
 
  const [data, setData] = useState([]);
-
-  const [cart, setCart] = useState([]);
+// Aquí, el estado cart se inicializa usando la función initialCart, asegurando que cuando la aplicación cargue, si hay algo en el carrito almacenado en localStorage, se cargue en el estado inicial del carrito. Si no hay nada, el carrito empieza vacío.
+  const [cart, setCart] = useState(initialCart);
 
   const MAX_ITEMS = 5;
   const MIN_ITEMS = 1;
@@ -17,6 +24,13 @@ function App() {
  useEffect(() => {
     setData(db)
  },[])
+
+//  Cada que "cart" cambie ejecutara el localStorage
+// Como la respuesta del LocalStorage es mas rapida que cuando se llama todo lo anterior para agregar el item al carrito puede que tengamos problemas y no se agregue al localstorage por eso usaremos un useEffect para manejar el cambio secundario de nuestro state
+ useEffect(()=>{
+        // LocalStorage toma 2 parametros el primero el nombre de lo que quieres alamacenar es solo un identificador y segundo lo que deseas almacenar, No te permite alamacenar objetos y arrays solamente strings, entonces como nuestro carrito es un array lo tenemos que convertir a string con JSON.stringify()
+        localStorage.setItem('cart', JSON.stringify(cart))
+ },[cart])
 
 //  No es normal que en el carrito se encuentren 2 veces el mismo producto si no solo aumente la cantidad
 // Identidicando si se duplica un elemento en el estado con "findIndex"
@@ -43,6 +57,7 @@ function agregarProduct(item) {
     item.quantity = 1;
     setCart([...cart, item])
   }
+
 }
 
 function eliminar(idDelete) {
@@ -80,9 +95,17 @@ function decrementarCantidad(id) {
     })
     setCart(updateDecrementar)
 }
+
+function cleanCart() {
+// Le mandaremos a setear un array vacio
+    setCart([])
+}
+
+
+
   return (
     <>
-    <Header cart={cart} eliminarItem={eliminar} incrementarCantidad={incrementarCantidad} decrementarCantidad={decrementarCantidad}/>
+    <Header cart={cart} eliminarItem={eliminar} incrementarCantidad={incrementarCantidad} decrementarCantidad={decrementarCantidad} cleanCart={cleanCart}/>
 
 
     <main className="container-xl mt-5">
