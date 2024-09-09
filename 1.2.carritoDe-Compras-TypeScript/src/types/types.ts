@@ -1,9 +1,9 @@
 
-/* Este archivo "types.d.ts" esa "d" es de "definition" y indica que este archivo es para definir
+/* 1.Este archivo "types.d.ts" esa "d" es de "definition" y indica que este archivo es para definir
 elementos globales y no repetir codigo*/
 // Cuando ocupas en ".d" no necesitas exportar lo del archivo
 // El metodo anterior el equipo de TS no lo recomienda
-// Recomienda crear una carpeta llamada "type" y crear el archivo solo con el ".ts" se puede llamar "index.ts" o "types.ts" e importar el archivo
+// 2.Recomienda crear una carpeta llamada "type" y crear el archivo solo con el ".ts" se puede llamar "index.ts" o "types.ts" e importar el archivo
 
 export interface Guitar {
     id: number;
