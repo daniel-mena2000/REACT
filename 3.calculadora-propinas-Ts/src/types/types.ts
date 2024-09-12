@@ -3,3 +3,8 @@ export type MenuItem = {
     name: string,
     price: number
 }
+
+// Como para la orden necesitamos lo mismo que MenuItem pero con precio por eso lo extendemos y le agregamos la nueva propiedad
+export type OrderItem = MenuItem &{
+    quantity: number
+}

@@ -1,8 +1,14 @@
 import { menuItems } from './data/bd.ts'
 import { MenuItem } from './components/MenuItem.tsx'
+import { useOrder } from './hooks/useOrder.ts'
+
+
 import './App.css'
+import { OrderContens } from './components/OrderContents.tsx'
 
 function App() {
+
+    const {order, addItem} = useOrder()
 
   return (
     <>
@@ -17,14 +23,13 @@ function App() {
 
         <div className='space-y-3 mt-10'>
         {menuItems.map(item => (
-            <MenuItem key={item.id} item={item}/>
+            <MenuItem key={item.id} item={item} addItem={addItem}/>
         ))}
         </div>
         </div>
 
-        <div>
-        <h2>Consumo</h2>
-
+        <div className='border border-dashed border-slate-300 p-5 rounded-lg space-y-10'>
+            <OrderContens order={order}/>
         </div>
     </main>
     </>
