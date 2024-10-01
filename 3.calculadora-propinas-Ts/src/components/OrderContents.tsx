@@ -1,12 +1,12 @@
-import { OrderItem } from "../types/types.ts"
+import { MenuItem, OrderItem } from "../types/types.ts"
 import { formatCurrency } from "../helpers/index.ts"
-import { MdDelete } from "react-icons/md";
 
 type OrderContentProps = {
-    order: OrderItem[];
+    order: OrderItem[]
+    removeItem: (id: MenuItem['id']) => void
 }
 
-export function OrderContens({order} : OrderContentProps) {
+export function OrderContens({order,removeItem} : OrderContentProps) {
     return(
         <>
             <h2 className="font-black text-4xl">Consumo</h2>
@@ -26,7 +26,7 @@ export function OrderContens({order} : OrderContentProps) {
 
                         <p className="font-bold">Cantidad: {item.quantity} </p>
                         </div>
-                        <button className="bg-red-600 h-7 w-7 rounded-full text-white font-black"><i className='bx bx-trash' ></i></button>
+                        <button className="bg-red-600 h-7 w-7 rounded-full text-white font-black" onClick={()=>removeItem(item.id)}><i className='bx bx-trash'></i></button>
                     </div>
                 ))}
                 </>
