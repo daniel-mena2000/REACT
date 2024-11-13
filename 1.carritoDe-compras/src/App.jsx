@@ -33,9 +33,10 @@ function App() {
  },[cart])
 
 //  No es normal que en el carrito se encuentren 2 veces el mismo producto si no solo aumente la cantidad
-// Identidicando si se duplica un elemento en el estado con "findIndex"
-// Dara -1 si no se cumple la condicion o en este caso no existe en el carrito si si se cumple o asea que si existe nos lanzara su "indice"
-
+// Identificando si se duplica un elemento en el estado con "findIndex"
+//findIndex: Nos dara -1 si no se cumple la condicion, si si se cumple nos lanzara el indice del elemento
+// En este caso dara -1 si el producto no esta en el carrito y por lo tanto lo agregara con la logica de agregar
+// Si volvemos a presionar el mismo elemento ya NO nos dara -1 si no el indice por que ya lo agrego es decir que entrara en el "if" de >=0 y entrara a la logica de solo aumentar la cantidad
 function agregarProduct(item) {
 // itemExistente: Es el índice del producto en el carrito que coincide con el producto que se está intentando agregar. Este índice se obtiene usando findIndex:
   const itemExistente = cart.findIndex(itemCart => itemCart.id === item.id );
