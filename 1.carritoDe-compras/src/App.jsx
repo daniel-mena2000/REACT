@@ -42,6 +42,7 @@ function agregarProduct(item) {
   const itemExistente = cart.findIndex(itemCart => itemCart.id === item.id );
   console.log(itemExistente);
   if (itemExistente >= 0) { //Existe en el carrito
+// Tendremos el problema que al hacer click en agregarALCARRITO se ira amentando la cantidad aun que limitemos el boton de incrementar, es por eso que ira verificando que no pase el limite de MAX_ITEMS y si ya no se cumple entonces que no retorne nada, Accedemos a carrito, vemos la posicion y verificamos la cantidad.
     if (cart[itemExistente].quantity >= MAX_ITEMS) return
     console.log("Ya existe");
 // Hacemos copia de nuestro carrito
