@@ -5,7 +5,7 @@ elementos globales y no repetir codigo*/
 // El metodo anterior el equipo de TS no lo recomienda
 // 2.Recomienda crear una carpeta llamada "type" y crear el archivo solo con el ".ts" se puede llamar "index.ts" o "types.ts" e importar el archivo
 
-export interface Guitar {
+export type Guitar = {
     id: number;
     name: string;
     image: string;
@@ -13,7 +13,7 @@ export interface Guitar {
     price: number
 }
 // Herencia en interfaces
-export interface CartItem extends Guitar{
+export type CartItem = Guitar & {
     quantity: number;
 }
 
