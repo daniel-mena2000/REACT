@@ -3,8 +3,10 @@ import { useState } from "react";
 import { MenuItem, OrderItem } from "../types/types.ts";
 
 export function useOrder() {
-// Haremos uso de "Generic" <tipoDeDato>
+// Haremos uso de "Generic" <tipoDeDato>, es decir le indicamos que el array tiene que tener las propiedades de OrderItem
     const [order, setOrder] = useState<OrderItem[]>([]);
+    // state para la propina
+    const [tip, setTip] = useState(0);
 
     function addItem(item : MenuItem) {
 
@@ -31,6 +33,8 @@ export function useOrder() {
     }
     return {
         order,
+        tip,
+        setTip,
         addItem,
         removeItem
     }

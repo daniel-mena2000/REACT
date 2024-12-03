@@ -1,19 +1,20 @@
 import { menuItems } from './data/bd.ts'
 import { MenuItem } from './components/MenuItem.tsx'
 import { useOrder } from './hooks/useOrder.ts'
-
+import OrderTotals from './components/OrderTotals.tsx'
+import PropinaPorcentaje from './components/PropinaPorcentaje.tsx'
 
 import './App.css'
 import { OrderContens } from './components/OrderContents.tsx'
 
 function App() {
 
-    const {order, addItem, removeItem} = useOrder()
+    const {order, addItem, removeItem, tip, setTip} = useOrder()
 
   return (
     <>
-    <header className='bg-orange-800 py-5'>
-        <h1 className='text-center text-4xl font-black text-stone-50'>Calculadora de propinas y consumo         <i className='bx bx-money-withdraw'></i>
+    <header className='bg-gray-800 py-5'>
+        <h1 className='text-center text-4xl font-black text-red-300'>Calculadora de propinas y consumo         <i className='bx bx-money-withdraw'></i>
         </h1>
     </header>
 
@@ -30,6 +31,8 @@ function App() {
 
         <div className='border border-dashed border-slate-300 p-5 rounded-lg space-y-10'>
             <OrderContens order={order} removeItem={removeItem}/>
+            <PropinaPorcentaje setTipe={setTip}/>
+            <OrderTotals order={order}/>
         </div>
     </main>
     </>
