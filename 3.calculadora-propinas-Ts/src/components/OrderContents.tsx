@@ -12,9 +12,7 @@ export function OrderContens({order,removeItem} : OrderContentProps) {
             <h2 className="font-black text-4xl">Consumo</h2>
 
             <div className="space-y-3 mt-5">
-            {order.length === 0 ?
-            <p className="text-center text-2xl">La orden esta vacia <i className='bx bx-sad'></i></p>
-            :(
+            {
                 <>
                 <p className="text-center text-2xl">Tu orden <i className='bx bxs-edit-alt'></i></p>
                 {order.map(item => (
@@ -29,7 +27,7 @@ export function OrderContens({order,removeItem} : OrderContentProps) {
                     </div>
                 ))}
                 </>
-            )
+
 }
 
             </div>

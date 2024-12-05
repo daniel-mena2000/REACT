@@ -19,9 +19,11 @@ const tipOptions = [
   type PropinaPorcentajeProps = {
 // Esta propiedad del setTipe la podemos sacar con ayuda de visualStudio colocando el mause sobre "setTipe", tambien podemos importar "Dispatch" que significa "disparar" y tambien "SetSateAction" para modificar el state y Quitar el "React." y hace un poco mas corta la llamada y quedaria: Dispatch<SetStateAction<number>>
     setTipe: React.Dispatch<React.SetStateAction<number>>
+// Esto nos sirve para reiniciar las opciones del check
+    tip: number
   }
 
-export default function PropinaPorcentaje({setTipe}:PropinaPorcentajeProps) {
+export default function PropinaPorcentaje({setTipe,tip}:PropinaPorcentajeProps) {
   return (
     <div>
         <h3 className="font-black text-2xl">
@@ -32,7 +34,8 @@ export default function PropinaPorcentaje({setTipe}:PropinaPorcentajeProps) {
                 tipOptions.map(itemT => (
                     <div key={itemT.id} className="flex gap-2">
                         <label htmlFor={itemT.id}>{itemT.label}</label>
-                        <input type="radio" name="tip" value={itemT.value}
+{/* EL check volvera a vacio cuando la propina vuelva a 0 se lo podemos quitar a menos que la propina sea obligatoria*/}
+                        <input type="radio" name="tip" value={itemT.value} checked={itemT.value === tip}
 // Como esperamos un numero y e.target.value es un string, nos dara un error y hay que convertirlo a numero con un "+" al inicio
 // Hay una propiedad llamada "valueAsNumber" es una forma muy nueva pero solo sirve para inputs de tipo texto, por eso no la usaremos
 

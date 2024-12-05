@@ -9,7 +9,7 @@ import { OrderContens } from './components/OrderContents.tsx'
 
 function App() {
 
-    const {order, addItem, removeItem, tip, setTip} = useOrder()
+    const {order, addItem, removeItem, tip, setTip, placeOrder} = useOrder()
 
   return (
     <>
@@ -30,9 +30,19 @@ function App() {
         </div>
 
         <div className='border border-dashed border-slate-300 p-5 rounded-lg space-y-10'>
-            <OrderContens order={order} removeItem={removeItem}/>
-            <PropinaPorcentaje setTipe={setTip}/>
-            <OrderTotals order={order}/>
+    {/* Pasaremos a una condicional el menu de totales para que no se muestre si la orden esta vacia */}
+
+            {order.length > 0 ? (
+                <>
+                    <OrderContens order={order} removeItem={removeItem}/>
+                    <PropinaPorcentaje setTipe={setTip} tip={tip}/>
+                    <OrderTotals order={order} tip={tip} placeOrder={placeOrder}/>
+                </>
+            ):
+            <p className="text-center text-2xl">La orden esta vacia <i className='bx bx-sad'></i></p>
+
+            }
+
         </div>
     </main>
     </>
