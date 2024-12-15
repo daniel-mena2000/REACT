@@ -1,4 +1,4 @@
-Carrito de Compras 1.1
+Carrito de Compras 1
 ### Skills
 <p align="left">
 <a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="36" height="36" alt="React" /></a><a href="https://www.w3.org/TR/CSS/#css" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" /></a><a href="https://vitejs.dev/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/vite-colored.svg" width="36" height="36" alt="Vite" /></a>
@@ -22,8 +22,8 @@ A lo largo del desarrollo, encontré varios desafíos que me ayudaron a mejorar 
 
 Este proyecto fue muy bueno para mejorar mis conocimientos en React. Logré mejorar mi manejo de `useState` y comprendí mejor la importancia de optimizar componentes con herramientas como `useMemo`. También adquirí fluidez en la manipulación de datos con métodos de arrays y en el diseño de componentes reutilizables.
 <hr>
-![](img/1.1.png)
+![](../public/img/1.1.png)
 <hr>
-![](img/1.2.png)
+![](../public/img/1.2.png)
 <hr>
-![](img/1.3.png)
+![](../public/img/1.3.png)
