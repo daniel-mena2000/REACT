@@ -24,6 +24,6 @@ Este proyecto fue muy bueno para mejorar mis conocimientos en React. Logré mejo
 <hr>
 ![1 1](https://github.com/user-attachments/assets/c1072aab-898e-4cd0-b25b-520cbd413a94)
 <hr>
-![texto_alternativo](../1.carritoDe-compras/public/img/1.2.png)
+![texto_alternativo](../public/img/1.1.png)
 <hr>
 ![texto_alternativo](../1.carritoDe-compras/public/img/1.3.png)
