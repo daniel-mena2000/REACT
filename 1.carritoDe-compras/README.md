@@ -26,4 +26,4 @@ Este proyecto fue muy bueno para mejorar mis conocimientos en React. Logré mejo
 <hr>
 ![texto_alternativo](REACT/1.carritoDe-compras/public/img/1.1.png)
 <hr>
-![texto_alternativo](../1.carritoDe-compras/public/img/1.3.png)
+![texto_alternativo](public/img/1.1.png)
