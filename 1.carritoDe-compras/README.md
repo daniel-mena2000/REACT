@@ -22,7 +22,7 @@ A lo largo del desarrollo, encontré varios desafíos que me ayudaron a mejorar 
 
 Este proyecto fue muy bueno para mejorar mis conocimientos en React. Logré mejorar mi manejo de `useState` y comprendí mejor la importancia de optimizar componentes con herramientas como `useMemo`. También adquirí fluidez en la manipulación de datos con métodos de arrays y en el diseño de componentes reutilizables.
 <hr>
-![texto_alternativo](../public/img/1.1.png)
+https://github.com/daniel-mena2000/REACT/edit/master/1.carritoDe-compras/README.md
 <hr>
 ![texto_alternativo](../1.carritoDe-compras/public/img/1.2.png)
 <hr>
