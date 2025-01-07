@@ -26,6 +26,8 @@ Estos proyectos están construidos con las siguientes herramientas principales:
 
 - **JavaScript (ES6+)**: Lenguaje base para React.
 
+- **TypeScript**: Un superset de JavaScript que agrega tipado estático.
+
 - **CSS/SCSS**: Para darle estilo a las aplicaciones.
 
 - **Tailwind CSS**: Un framework de utilidades para diseñar rápidamente.
