@@ -3,6 +3,8 @@
 ¡Bienvenido a mi carpeta de proyectos! Aquí encontrarás aplicaciones básicas que he desarrollado mientras aprendo y practico React. Cada uno de estos proyectos es un paso en mi camino para dominar esta biblioteca.
 
 
+
+
 ## 📂 Contenido
 
 - **Proyecto 1: Carrito de compras básico (JavaScript)**: Una implementación inicial de un carrito de compras usando JavaScript.
@@ -14,7 +16,6 @@
 - **Proyecto 3: Calculadora de propinas**: Una herramienta sencilla para calcular propinas.
 
 - **Proyecto 4: Contador de calorías**: Una aplicación para rastrear y gestionar el consumo de calorías.
-
 
 
 ## 🛠️ Tecnologías
@@ -48,7 +49,7 @@ Estos proyectos están construidos con las siguientes herramientas principales:
 
 4. Inicia el proyecto:
 
-	``npm start``
+	``npm run dev``
 
 
 >Quiero dar un agradecimiento especial a **Juan Pablo De la Torre Valdez** por su contenido educativo y recursos, que han sido de gran ayuda en mi aprendizaje de React.
