@@ -1,21 +1,27 @@
 import { useState } from "react"
 import { categorias } from "../data/categories"
+import { Activity } from "../types"
 
 export function Form() {
 // Podriamos crear "states" separados para: categoria, actividad y calorias pero estos estan relacionados y dependen uno del otro asi que solo haremos uno para todos.
-const [activity, setActivity] = useState({
+const [activity, setActivity] = useState<Activity>({
     category: 1,
     name: '',
     calories: 0
 })
+// Como tipo al (e) le pasaremos el tipo que valla a utilizar cada elemento en este caso es un select y un input
+// Podemos importar "ChangeEvent quitar ".React
+const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+// Crearemos una variable que comprobara si donde yo estoy escribiendo si es categoria, calorias para despues convertirlo a numero si escribimos en category o calories dara "true" si escribimos en name dara false
+const isNumberField = ['category', 'calories'.includes(e.target.id)]
 
-const handleChange = (e) => {
 // e.target.id: Nos permitira saber sobre que elemento estoy escribiendo gracias al id
 // e.target.value: Nos dira que es lo que el usuario esta escribiendo
 // Es importante hacer una copia del state para que no borre la referencia
     setActivity({
         ...activity,
-        [e.target.id]: e.target.value  //Ejemplo: (id:name: value:comida)
+// Verificamos si estan escibiendo en categorie o calories si si lo convertimos en numero con (+), si no que lo pase como este
+        [e.target.id]: isNumberField ? +e.target.value : e.target.value //Ejemplo: (id:name: value:comida)
     })
 }
 
@@ -27,7 +33,8 @@ const handleChange = (e) => {
             <select id="category" className="border border-slate-300 p-2 rounde-lg w-full bg-white"
              value={activity.category}
             //  Usaremos un onchange para detectar cambios para ir cambiando el value del los inputs
-             onChange={handleChange}
+            // Verificar el tipo de (e):   onChange={e =>} colocarse sobre "e" y ver el tipo que nos da VSC
+            onChange={handleChange}
              >
             {categorias.map(item => (
                 <option key={item.id} value={item.id}>
