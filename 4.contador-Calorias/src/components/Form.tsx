@@ -12,8 +12,9 @@ const [activity, setActivity] = useState<Activity>({
 // Como tipo al (e) le pasaremos el tipo que valla a utilizar cada elemento en este caso es un select y un input
 // Podemos importar "ChangeEvent quitar ".React
 const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
-// Crearemos una variable que comprobara si donde yo estoy escribiendo si es categoria, calorias para despues convertirlo a numero si escribimos en category o calories dara "true" si escribimos en name dara false
-const isNumberField = ['category', 'calories'.includes(e.target.id)]
+//Quiero que category y calories sean de tipo numero ya que en el state son string. Crearemos una variable que comprobara si donde yo estoy escribiendo si es categoria o calorias para despues convertirlo a numero si escribimos en category o calories dara "true" si escribimos en otro campo que no sean estos 2 dara false
+// Veremos si las palabras (category o calories) coinciden con e.target.id que apunta a los id
+const isNumberField = ['category', 'calories'].includes(e.target.id)
 
 // e.target.id: Nos permitira saber sobre que elemento estoy escribiendo gracias al id
 // e.target.value: Nos dira que es lo que el usuario esta escribiendo
