@@ -1,7 +1,6 @@
-# <p align="left">
 <h1>Proyectos de React</h1> <a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="36" height="36" alt="React" /></a>
 
-</p> 
+
 
 ¡Bienvenido a mi carpeta de proyectos! Aquí encontrarás aplicaciones básicas que he desarrollado mientras aprendo y practico React. Cada uno de estos proyectos es un paso en mi camino para dominar esta biblioteca.
 
