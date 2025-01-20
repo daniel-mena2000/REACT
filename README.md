@@ -11,9 +11,11 @@
 
 - **Proyecto 1: Carrito de compras básico (JavaScript)**: Una implementación inicial de un carrito de compras usando JavaScript.
 
-- **Proyecto 1.2: Carrito de compras (TypeScript)**: Una versión mejorada del carrito de compras implementada con TypeScript.
+- **Proyecto 1.2: Carrito de compras (TypeScript)**: Una versión mejorada del carrito de compras implementada con TypeScrip
 
-- **Proyecto 2: To-Do List**: Una aplicación para gestionar tareas pendientes.
+- **Proyecto 2: To-Do List (TypeScript)**: Una aplicación para gestionar tareas pendientes.
+
+- **Proyecto 2.1: To-Do List (JavaScript)**: Una aplicación para gestionar tareas pendientes.
 
 - **Proyecto 3: Calculadora de propinas**: Una herramienta sencilla para calcular propinas.
 
