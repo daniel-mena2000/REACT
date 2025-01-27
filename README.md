@@ -1,5 +1,5 @@
 <p align="center">
-# </> PROYECTOS REACT
+<h1> PROYECTOS REACT </h1>
 </p>
 
 <p align="center">
