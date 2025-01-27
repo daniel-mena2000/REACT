@@ -1,6 +1,8 @@
 # </> PROYECTOS REACT
 
-
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Logo" width="100">
+</p>
 
 ¡Bienvenido a mi carpeta de proyectos! Aquí encontrarás aplicaciones básicas que he desarrollado mientras aprendo y practico React. Cada uno de estos proyectos es un paso en mi camino para dominar esta biblioteca.
 
