@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useReducer } from 'react'
 import './App.css'
 import { Form } from './components/Form.tsx'
+import { activityReducer, initialState } from './reducers/activity-reducers.ts'
 
 function App() {
-  const [count, setCount] = useState(0)
+// dispatch: Una función que se usa para enviar acciones al reducer y actualizar el estado.
 
+const [state, dispatch] = useReducer(activityReducer, initialState)
   return (
     <>
     <header className='bg-indigo-400 py-3'>
