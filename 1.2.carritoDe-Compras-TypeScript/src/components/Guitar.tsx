@@ -1,14 +1,11 @@
 import type { Guitar } from '../types/types.ts';
 
-// Los types que solo vas a usar en un solo componente se quedan en el archivo donde los usaras
 type GuitarProps = {
     guitar: Guitar;
-/* En este caso, addToCart es una función que espera un parámetro de tipo Guitar.
-void: Indica que la función no devuelve ningún valor. Es decir, la función realiza una acción pero no retorna ningún dato. */
+
     addToCart: (item: Guitar) => void
 }
-// SINTAXIS SIN USAR UN type O un Interface solo importando Guitar y tipando el paramentro de addtocart y el retorno
-// export default function Guitar({guitar, addToCart}: {guitar: Guitar, addToCart: (item: Guitar)=> void})
+
 export default function Guitar({guitar, addToCart}: GuitarProps) {
 
     const {name, image, description, price } = guitar

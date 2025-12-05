@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { db } from '../data/db'
 import type { Guitar, CartItem, GuitarID } from '../types/types.ts';
-// Cuando haces consultas APIS o en este caso usar LocalStorage a typeScript se le llega a complicar inferir el tipo de dato
+
 export const useCart = () => {
     const initialCart = () : CartItem[] => {
         const localStorageCart = localStorage.getItem('cart')
@@ -26,18 +26,13 @@ export const useCart = () => {
             updatedCart[itemExists].quantity++
             setCart(updatedCart)
         } else {
-//Esta constante será un nuevo objeto de tipo CartItem donde tenemos la cantidad.
-// { ...item }: Esto utiliza el operador de spread para copiar todas las propiedades del objeto item en un nuevo objeto. item es de tipo Guitar, por lo que sus propiedades (id, name, image, description, price, etc.) se copian en newItem.
-// quantity: 1: Después de copiar las propiedades de item, se agrega una nueva propiedad quantity con el valor 1 al nuevo objeto. Si item ya tuviera una propiedad quantity (lo cual no ocurre porque item es de tipo Guitar), esta sería sobrescrita por el valor 1.
             const newItem : CartItem = {...item, quantity : 1}
             setCart([...cart, newItem])
         }
     }
-// Podemos pasar el ID sacandolo de Guitar
     function removeFromCart(id: Guitar["id"]) {
         setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))
     }
-// O podemos crear un type con solo el ID
     function decreaseQuantity(id: GuitarID) {
         const updatedCart = cart.map( item => {
             if(item.id === id && item.quantity > MIN_ITEMS) {
