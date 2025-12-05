@@ -1,7 +1,15 @@
 import './App.css'
 import { Form } from './components/Form'
 function App() {
+import { useReducer } from 'react'
+import './App.css'
+import { Form } from './components/Form.tsx'
+import { activityReducer, initialState } from './reducers/activity-reducers.ts'
 
+function App() {
+// dispatch: Una función que se usa para enviar acciones al reducer y actualizar el estado.
+
+const [state, dispatch] = useReducer(activityReducer, initialState)
   return (
     <>
 
