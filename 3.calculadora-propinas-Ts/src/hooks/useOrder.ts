@@ -14,7 +14,7 @@ export function useOrder() {
         if (itemExist) {
 // Ahora como "itemExist" solo nos dice si el elemento existe, tenemos que ver que elemento es el repetido para ir aumentando la cantidad para eso usaremos un map, recordar que esto para crear un nuevo array y no alterar el principal
 
-// Entonces si se cumple usaremos (?:) para condicionar y si si esta repetido hacemos una copia de "itemOrder" y a su cantidad le aumentamos 1, y si no pues dejamos la referencia como esta
+// Entonces si se cumple y entra en el if usaremos (?:) para condicionar, map ira recorriendo cada itemOrder, ejemplo vera   { id: 1, quantity: 1 },{ id: 2, quantity: 3 }, { id: 3, quantity: 2 } y por ejemplo revisara si esta el ID:2, revisara si 1 === 2 en este caso pues no es 2, entonces ahi es donde entra en ":" y devuelve y agrega el elemento como esta al nuevo array "updateOrder", luego 2 === 2 ahi si entonces le suma 1 a la cantidad, lo agrega al array , luego 2===3, no entonces lo deja como esta, es importante entender que map ira contruyendo el nuevo array en base a esto y a diferencia de findIndex, map recorre todo el array indendientemente que ya alla encontrado la coincidencia, findIndex al encontrar la primera coincidencia se detiene y devuleve 0 o -1.
             const updateOrder = order.map(itemOrder => itemOrder.id === item.id ?
                  {...itemOrder, quantity: itemOrder.quantity + 1} : itemOrder);
 // Ahora si ya podemos setear
