@@ -11,6 +11,7 @@ const [activity, setActivity] = useState<Activity>({
 })
 // Como tipo al (e) le pasaremos el tipo que valla a utilizar cada elemento en este caso es un select y un input
 // Podemos importar "ChangeEvent quitar ".React
+//Podriamos hacer una funcion para cada input y el select, asignando el estado con el valor del input, pero lo englobaremos en una sola funcion, donde es importante que el nombre del state se llame igual que el "id" de los elementos a seleccionar, asi se asignaran automaticamente el nombre del "id" al nombre del estado a cambiar.
 const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
 //Quiero que category y calories sean de tipo numero ya que en el state son string. Crearemos una variable que comprobara si donde yo estoy escribiendo si es categoria o calorias para despues convertirlo a numero si escribimos en category o calories dara "true" si escribimos en otro campo que no sean estos 2 dara false
 // Veremos si las palabras (category o calories) coinciden con e.target.id que apunta a los id
