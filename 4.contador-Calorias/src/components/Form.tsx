@@ -1,8 +1,14 @@
-import { useState } from "react"
+import { Dispatch, useState } from "react"
 import { categorias } from "../data/categories"
 import { Activity } from "../types"
+import { ActivityActions } from "../reducers/activity-reducers"
 
-export function Form() {
+//Traeremos Dispatch de React y le vamos a pasar las acciones LLamadas "ActivityActions" para que el dispatch que se esta creando en el useReducer que viene desde "ActivityReducer" tenga la informacion de que acciones tiene el reducer que lo ha creado
+type FormProps = {
+    dispatch: Dispatch<ActivityActions>
+}
+
+export function Form({dispatch}: FormProps) {
 // Podriamos crear "states" separados para: categoria, actividad y calorias pero estos estan relacionados y dependen uno del otro asi que solo haremos uno para todos.
 const [activity, setActivity] = useState<Activity>({
     category: 1,
@@ -11,25 +17,38 @@ const [activity, setActivity] = useState<Activity>({
 })
 // Como tipo al (e) le pasaremos el tipo que valla a utilizar cada elemento en este caso es un select y un input
 // Podemos importar "ChangeEvent quitar ".React
-//Podriamos hacer una funcion para cada input y el select, asignando el estado con el valor del input, pero lo englobaremos en una sola funcion, donde es importante que el nombre del state se llame igual que el "id" de los elementos a seleccionar, asi se asignaran automaticamente el nombre del "id" al nombre del estado a cambiar.
+//Podriamos hacer una funcion para cada input y el select, asignando el estado con el valor del input, pero lo englobaremos en una sola funcion, donde es importante que el nombre del state se llame igual que el "id" de los elementos a seleccionar, asi se asignaran automaticamente el nombre del "id" al nombre del estado a cambiar se usa [] para que pueda ser dinamico.
 const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
 //Quiero que category y calories sean de tipo numero ya que en el state son string. Crearemos una variable que comprobara si donde yo estoy escribiendo si es categoria o calorias para despues convertirlo a numero si escribimos en category o calories dara "true" si escribimos en otro campo que no sean estos 2 dara false
-// Veremos si las palabras (category o calories) coinciden con e.target.id que apunta a los id
-const isNumberField = ['category', 'calories'].includes(e.target.id)
-
-// e.target.id: Nos permitira saber sobre que elemento estoy escribiendo gracias al id
-// e.target.value: Nos dira que es lo que el usuario esta escribiendo
-// Es importante hacer una copia del state para que no borre la referencia
+//Veremos si el "id" por ejemplo "calories" esta dentro del array "['category', 'calories']" y condicionaremos en este caso, si si esta pues lo convertimos a numero
+const isNumberField = ['category', 'calories'].includes(e.target.id) //ejemplo: ['category', 'calories'].includes('calories') // true
     setActivity({
         ...activity,
-// Verificamos si estan escibiendo en categorie o calories si si lo convertimos en numero con (+), si no que lo pase como este
         [e.target.id]: isNumberField ? +e.target.value : e.target.value //Ejemplo: (id:name: value:comida)
     })
 }
 
+//Funcion para activar el boton de "guardar" se verifica que no se rellene con espacion en blanco o se quede en 0, le pasamos esta funcion al "disabled" del boton
+function isValidActivity() {
+    const {name, calories} = activity
+    return name.trim() !== '' && calories > 0
+}
+
+//Queremos el "dispatch" cuando se active: handleSubmit
+function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    dispatch({type: 'guardar actividad', payload: {newActivity: activity}})
+
+}
+
+
     return(
         <>
-        <form className="space-y-5 bg-white shadow p-10 rounded-lg">
+        <form
+        className="space-y-5 bg-white shadow p-10 rounded-lg"
+        onSubmit={handleSubmit}
+        >
             <label htmlFor="category">Categoria</label>
             {/* Le asignaremos el "value" lo que valga el valor de category del estado el valor en este caso 1 sera comida y 2 ejercicio, dejaremos 1 por defecto*/}
             <select id="category" className="border border-slate-300 p-2 rounde-lg w-full bg-white"
@@ -69,7 +88,7 @@ const isNumberField = ['category', 'calories'].includes(e.target.id)
 
 
             </div>
-            <input type="submit" className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer" value='Guardar Comida o Guardar Ejercicio'/>
+            <input type="submit" className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer disabled:opacity-10" value={activity.category === 1 ? 'Guardar Comida' : 'Guardar Ejercicio'} disabled={!isValidActivity()}/>
         </form>
         </>
     )
