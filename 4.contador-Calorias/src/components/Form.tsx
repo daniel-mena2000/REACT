@@ -2,19 +2,24 @@ import { Dispatch, useState } from "react"
 import { categorias } from "../data/categories"
 import { Activity } from "../types"
 import { ActivityActions } from "../reducers/activity-reducers"
+import { v4 as uuidv4} from "uuid"
 
 //Traeremos Dispatch de React y le vamos a pasar las acciones LLamadas "ActivityActions" para que el dispatch que se esta creando en el useReducer que viene desde "ActivityReducer" tenga la informacion de que acciones tiene el reducer que lo ha creado
 type FormProps = {
     dispatch: Dispatch<ActivityActions>
 }
 
-export function Form({dispatch}: FormProps) {
-// Podriamos crear "states" separados para: categoria, actividad y calorias pero estos estan relacionados y dependen uno del otro asi que solo haremos uno para todos.
-const [activity, setActivity] = useState<Activity>({
+const initialState: Activity = {
+    id: uuidv4(),
     category: 1,
     name: '',
     calories: 0
-})
+}
+
+export function Form({dispatch}: FormProps) {
+// Podriamos crear "states" separados para: categoria, actividad y calorias pero estos estan relacionados y dependen uno del otro asi que solo haremos uno para todos.
+const [activity, setActivity] = useState<Activity>(initialState)
+
 // Como tipo al (e) le pasaremos el tipo que valla a utilizar cada elemento en este caso es un select y un input
 // Podemos importar "ChangeEvent quitar ".React
 //Podriamos hacer una funcion para cada input y el select, asignando el estado con el valor del input, pero lo englobaremos en una sola funcion, donde es importante que el nombre del state se llame igual que el "id" de los elementos a seleccionar, asi se asignaran automaticamente el nombre del "id" al nombre del estado a cambiar se usa [] para que pueda ser dinamico.
@@ -37,9 +42,14 @@ function isValidActivity() {
 //Queremos el "dispatch" cuando se active: handleSubmit
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-
+//Le pasamos la informacion al payload
     dispatch({type: 'guardar actividad', payload: {newActivity: activity}})
 
+//REINICIAMOS FORMULARIO y asignamos nuevo ID para cada elemento
+    setActivity({
+        ...initialState,
+        id: uuidv4()
+    })
 }
 
 
