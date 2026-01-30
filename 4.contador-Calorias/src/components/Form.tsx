@@ -1,12 +1,13 @@
-import { Dispatch, useState } from "react"
+import { Dispatch, useEffect, useState } from "react"
 import { categorias } from "../data/categories"
 import { Activity } from "../types"
 import { ActivityActions } from "../reducers/activity-reducers"
 import { v4 as uuidv4} from "uuid"
-
+import { ActivityState } from "../reducers/activity-reducers"
 //Traeremos Dispatch de React y le vamos a pasar las acciones LLamadas "ActivityActions" para que el dispatch que se esta creando en el useReducer que viene desde "ActivityReducer" tenga la informacion de que acciones tiene el reducer que lo ha creado
 type FormProps = {
     dispatch: Dispatch<ActivityActions>
+    state: ActivityState
 }
 
 const initialState: Activity = {
@@ -16,9 +17,19 @@ const initialState: Activity = {
     calories: 0
 }
 
-export function Form({dispatch}: FormProps) {
+export function Form({dispatch,state}: FormProps) {
 // Podriamos crear "states" separados para: categoria, actividad y calorias pero estos estan relacionados y dependen uno del otro asi que solo haremos uno para todos.
 const [activity, setActivity] = useState<Activity>(initialState)
+
+//Usaremos un efecto para saber en que momento nuestro state tiene un activeId y setearemos el formulario
+useEffect(()=>{
+    if (state.activeId) {
+        console.log('Ya hay algo en activeID');
+//state.activities.filter(...): El método .filter() siempre devuelve un nuevo array con todos los elementos que cumplen la condición, incluso si solo hay uno (o ninguno).El [0] al final de esa línea significa "obtén el primer elemento del array resultante". Veremos si de "activities" hay algun elemento con el id de la actividad que presionamos
+        const selectActivity = state.activities.filter(item => item.id === state.activeId)[0]
+        setActivity(selectActivity)
+    }
+},[state.activeId])
 
 // Como tipo al (e) le pasaremos el tipo que valla a utilizar cada elemento en este caso es un select y un input
 // Podemos importar "ChangeEvent quitar ".React
@@ -42,7 +53,7 @@ function isValidActivity() {
 //Queremos el "dispatch" cuando se active: handleSubmit
 function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-//Le pasamos la informacion al payload
+//Le pasamos la informacion al payload que es el estado de activity
     dispatch({type: 'guardar actividad', payload: {newActivity: activity}})
 
 //REINICIAMOS FORMULARIO y asignamos nuevo ID para cada elemento
