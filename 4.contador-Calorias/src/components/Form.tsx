@@ -1,33 +1,70 @@
-
-import { useState } from "react"
-import { categorias } from "../data/categories.ts"
+import { Dispatch, useEffect, useState } from "react"
+import { categorias } from "../data/categories"
 import { Activity } from "../types"
+import { ActivityActions } from "../reducers/activity-reducers"
+import { v4 as uuidv4} from "uuid"
+import { ActivityState } from "../reducers/activity-reducers"
+//Traeremos Dispatch de React y le vamos a pasar las acciones LLamadas "ActivityActions" para que el dispatch que se esta creando en el useReducer que viene desde "ActivityReducer" tenga la informacion de que acciones tiene el reducer que lo ha creado
+type FormProps = {
+    dispatch: Dispatch<ActivityActions>
+    state: ActivityState
+}
 
-export function Form() {
-// Podriamos crear "states" separados para: categoria, actividad y calorias pero estos estan relacionados y dependen uno del otro asi que solo haremos uno para todos.
-const [activity, setActivity] = useState<Activity>({
+const initialState: Activity = {
+    id: uuidv4(),
     category: 1,
     name: '',
     calories: 0
-})
-// Como tipo al (e) le pasaremos el tipo que valla a utilizar cada elemento en este caso es un select y un input
-// Podemos importar "ChangeEvent quitar ".React
-const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
-const isNumberField = ['category', 'calories'].includes(e.target.id)
+}
 
-// e.target.id: Nos permitira saber sobre que elemento estoy escribiendo gracias al id
-// e.target.value: Nos dira que es lo que el usuario esta escribiendo
-// Es importante hacer una copia del state para que no borre la referencia
+export function Form({dispatch,state}: FormProps) {
+
+const [activity, setActivity] = useState<Activity>(initialState)
+
+//Usaremos un efecto para saber en que momento nuestro state tiene un activeId y setearemos el formulario
+useEffect(()=>{
+    if (state.activeId) {
+        console.log('Ya hay algo en activeID');
+        const selectActivity = state.activities.filter(item => item.id === state.activeId)[0]
+        setActivity(selectActivity)
+    }
+},[state.activeId])
+
+const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+
+const isNumberField = ['category', 'calories'].includes(e.target.id) //ejemplo: ['category', 'calories'].includes('calories') // true
     setActivity({
         ...activity,
-// Verificamos si estan escibiendo en categorie o calories si si lo convertimos en numero con (+), si no que lo pase como este
         [e.target.id]: isNumberField ? +e.target.value : e.target.value //Ejemplo: (id:name: value:comida)
     })
 }
 
+//Funcion para activar el boton de "guardar" se verifica que no se rellene con espacion en blanco o se quede en 0, le pasamos esta funcion al "disabled" del boton
+function isValidActivity() {
+    const {name, calories} = activity
+    return name.trim() !== '' && calories > 0
+}
+
+//Queremos el "dispatch" cuando se active: handleSubmit
+function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+//Le pasamos la informacion al payload que es el estado de activity
+    dispatch({type: 'guardar actividad', payload: {newActivity: activity}})
+
+//REINICIAMOS FORMULARIO y asignamos nuevo ID para cada elemento
+    setActivity({
+        ...initialState,
+        id: uuidv4()
+    })
+}
+
+
     return(
         <>
-        <form className="space-y-5 bg-white shadow p-10 rounded-lg">
+        <form
+        className="space-y-5 bg-white shadow p-10 rounded-lg"
+        onSubmit={handleSubmit}
+        >
             <label htmlFor="category">Categoria</label>
             {/* Le asignaremos el "value" lo que valga el valor de category del estado el valor en este caso 1 sera comida y 2 ejercicio, dejaremos 1 por defecto*/}
             <select id="category" className="border border-slate-300 p-2 rounde-lg w-full bg-white"
@@ -67,7 +104,7 @@ const isNumberField = ['category', 'calories'].includes(e.target.id)
 
 
             </div>
-            <input type="submit" className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer" value='Guardar Comida o Guardar Ejercicio'/>
+            <input type="submit" className="bg-gray-800 hover:bg-gray-900 w-full p-2 font-bold uppercase text-white cursor-pointer disabled:opacity-10" value={activity.category === 1 ? 'Guardar Comida' : 'Guardar Ejercicio'} disabled={!isValidActivity()}/>
         </form>
         </>
     )
