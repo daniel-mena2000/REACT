@@ -24,8 +24,14 @@ export function BudgetForm() {
     return(
         <>
             <form onSubmit={handleSubmit} className="space-y-5">
+                <img
+                    src="./controlGasto.png"
+                    alt=""
+                    className="w-100 mx-auto"
+                />
+
                 <div className="flex flex-col space-Y-5">
-                    <label htmlFor="budge" className="text-4xl text-cyan-700 font-bold text-center">Definir Presupuesto</label>
+                    <label htmlFor="budge" className="text-4xl text-sky-700 font-bold text-center">Definir Presupuesto</label>
 
                 <input
                     id="budgeID"
@@ -39,7 +45,7 @@ export function BudgetForm() {
 
                 </div>
 
-                <input type="submit" value={'Definir Prsupuesto'} className="bg-cyan-600 hover:bg-cyan-700 cursor-pointer w-full p-2 text-white font-black uppercase disabled:opacity-40"
+                <input type="submit" value={'Definir Prsupuesto'} className="bg-sky-600 hover:bg-sky-500 cursor-pointer w-full p-2 text-white font-black uppercase disabled:opacity-40"
                 disabled={isValid}
                 />
 
