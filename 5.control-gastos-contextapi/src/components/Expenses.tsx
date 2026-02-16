@@ -1,4 +1,4 @@
-import ExpenseModal from "../components/ExpenseModal"
+import ExpenseModalForm from "./ExpenseModalForm"
 import { useBudget } from "../hooks/useBudget"
 export default function Expenses() {
 
@@ -13,7 +13,7 @@ export default function Expenses() {
         +
       </button>
 
-      <ExpenseModal
+      <ExpenseModalForm
         open={state.modal}
         onClose={() => dispatch({type: 'show-modal', payload: {modal: false}})}
       />

@@ -1,6 +1,7 @@
 import { BudgetForm } from "./components/BudgetForm"
 import { useBudget } from "./hooks/useBudget"
 import { BudgetTracker } from "./components/BudgetTracker"
+import { ExpenseList } from "./components/ExpenseList"
 import Expenses from "./components/Expenses"
 
 function App() {
@@ -21,9 +22,13 @@ const isValidBudget = state.budget > 0
             {isValidBudget ? <BudgetTracker />  :  <BudgetForm />}
         </div>
 
+        {isValidBudget && (
         <main className="max-w-3xl mx-auto p-10">
-            {isValidBudget && <Expenses />}
+            <Expenses />
+            <ExpenseList/>
         </main>
+
+        )}
     </>
   )
 }
