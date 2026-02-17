@@ -2,7 +2,7 @@ import { categories } from "../db/categories"
 import DatePicker from 'react-date-picker'; //"npm i react-date-picker"
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css'; // instalamos primero "npm i react-calendar"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { DraftExpense } from "../types";
 import type { Value } from "react-calendar/dist/shared/types.js";
 import { ErrorMessage } from "./ErrorMessage";
@@ -23,7 +23,21 @@ const [expense, setExpense] = useState<DraftExpense>({
 })
 
 const [error, setError] = useState('')
-const {dispatch} = useBudget()
+const {state, dispatch} = useBudget()
+
+//Si pasa a false es decir se cierra el modal se reinicia el formulario automáticamente
+useEffect(() => {
+  if (!open) {
+    setExpense({
+      amount: 0,
+      expenseName: '',
+      category: '',
+      date: new Date()
+    })
+    setError('')
+  }
+}, [open])
+
 
 const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
 //Verificamos si algun "name" de algun input es amount, para despues a ese convertirlo en numero
@@ -49,11 +63,17 @@ if (Object.values(expense).includes('')) {
     setError('Todos los campos son obligatorios')
     return;
 }
-//Si los campos estan llenos, entonces evita el if y entra aqui agregando un nuevo gasto al hacer submit:
 
-dispatch({type: 'add-expense', payload:{expense: expense}})
+//Si hay algo en editingId significa que estamos editando, recordar que el payload espera un id, pero expense es de tipo "Expense" que no tiene id, espor eso que le indicamos que ese id, lo va a sacar de "editingId" y pasamos el resto como estaba, solomente agregandole un Id
+if (state.editingId) {
+    dispatch({type: 'update-expense', payload: {expense: {id: state.editingId, ...expense}}})
+}else{
+//Si los campos estan llenos y no estan activo editing id, entonces evita el if y entra aqui agregando un nuevo gasto al hacer submit:
+    dispatch({type: 'add-expense', payload:{expense: expense}})
 
-//Reiniciar state
+}
+
+//Reiniciar state al agregar el gasto
 
 setExpense({
     amount: 0,
@@ -62,6 +82,17 @@ setExpense({
     date: new Date()
 })
 }
+
+//Quiero la info del elemento de "expenses" que tenga el mismo id que "editingId", quiero la primera coincidencia
+useEffect(() => {
+    if (state.editingId) { //Validamos que editingId tenga algo
+        const editingExpense = state.expenses.filter(item => item.id === state.editingId)[0]
+        setExpense(editingExpense)
+    }
+
+}, [state.editingId]) //En caso de que editingId cambie, queremos ejecutar este codigo
+
+
 
 //Si el modal esta cerrado(false) null, si no que abra el modal(true)
   if (!open) return null
@@ -74,7 +105,7 @@ setExpense({
 
       <div className="bg-white p-6 rounded-xl w-full max-w-md">
         <legend className="uppercase text-center text-2xl font-black border-b-4 border-sky-600 py-2">
-            Nuevo gasto
+            {state.editingId ? 'Editar Gasto': 'Nuevo gasto'}
         </legend>
 
         {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -129,10 +160,11 @@ setExpense({
        </div>
 
       <input type="submit" className="bg-sky-600 text-white px-4 py-2 rounded-lg w-full font-bold uppercase"
-            value={'Registrar Gasto'}
+            value={state.editingId ? 'Guardar Cambios' : 'Registrar Gasto'}
       />
 
         <button
+        type="button"
           onClick={onClose}
           className="mt-3 text-blue-600 w-full"
         >

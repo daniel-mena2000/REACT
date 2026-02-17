@@ -24,8 +24,9 @@ const isValidBudget = state.budget > 0
 
         {isValidBudget && (
         <main className="max-w-3xl mx-auto p-10">
+             <ExpenseList/>
             <Expenses />
-            <ExpenseList/>
+
         </main>
 
         )}
