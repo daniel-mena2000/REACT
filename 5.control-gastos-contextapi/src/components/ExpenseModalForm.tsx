@@ -23,7 +23,8 @@ const [expense, setExpense] = useState<DraftExpense>({
 })
 
 const [error, setError] = useState('')
-const {state, dispatch} = useBudget()
+const [previousAmount, setPreviousAmount] = useState(0) //Estado para que "disponible" se actualice bien
+const {state, dispatch, disponibleBudget} = useBudget()
 
 //Si pasa a false es decir se cierra el modal se reinicia el formulario automáticamente
 useEffect(() => {
@@ -64,6 +65,12 @@ if (Object.values(expense).includes('')) {
     return;
 }
 
+//VALIDAR QUE NO PASE EL LIMITE DEL GASTO
+if (expense.amount - previousAmount > disponibleBudget) {
+    setError('Ese gasto se sale del presupuesto')
+    return
+}
+
 //Si hay algo en editingId significa que estamos editando, recordar que el payload espera un id, pero expense es de tipo "Expense" que no tiene id, espor eso que le indicamos que ese id, lo va a sacar de "editingId" y pasamos el resto como estaba, solomente agregandole un Id
 if (state.editingId) {
     dispatch({type: 'update-expense', payload: {expense: {id: state.editingId, ...expense}}})
@@ -81,6 +88,7 @@ setExpense({
     category: '',
     date: new Date()
 })
+setPreviousAmount(0)
 }
 
 //Quiero la info del elemento de "expenses" que tenga el mismo id que "editingId", quiero la primera coincidencia
@@ -88,6 +96,7 @@ useEffect(() => {
     if (state.editingId) { //Validamos que editingId tenga algo
         const editingExpense = state.expenses.filter(item => item.id === state.editingId)[0]
         setExpense(editingExpense)
+        setPreviousAmount(editingExpense.amount)
     }
 
 }, [state.editingId]) //En caso de que editingId cambie, queremos ejecutar este codigo

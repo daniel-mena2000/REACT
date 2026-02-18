@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { useBudget } from "../hooks/useBudget"
 import { ExpenseDetail } from "./ExpenseDetail"
 
@@ -6,14 +7,19 @@ export function ExpenseList() {
 
     const {state} = useBudget()
 
-    const isEmpty = state.expenses.length === 0
+
+//Primero vemos si hay una categoria seleccionada "state.currentCategory" si si, vamos a filtrar los gastos de esa categoria, si no hay ninguna seleccionada retornamos todas como estaban
+    const filteredExpenses = state.currentCategory ? state.expenses.filter(item => item.category === state.currentCategory) : state.expenses
+
+    const isEmpty = useMemo(() =>  filteredExpenses.length === 0, [filteredExpenses])
+
     return(
-        <div className="mt-10">
+        <div className="mt-10 bg-white shadow-lg rounded-lg p-10">
             {isEmpty ? <p className="text-gray-600 text-2xl font-bold">No hay gastos</p> :
 
             <>
                 <p className="text-gray-600 text-2xl font-bold my-5">Listado de Gastos</p>
-                {state.expenses.map(item => (
+                {filteredExpenses.map(item => (
                     < ExpenseDetail
                     key={item.id}
                     expense={item}

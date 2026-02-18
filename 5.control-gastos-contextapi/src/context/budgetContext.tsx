@@ -7,7 +7,10 @@ import type { BudgetAction, BudgetState } from "../reducers/budget-reducer"
 //ReactNode → representa cualquier cosa que React pueda renderizar (componentes, texto, etc.)
 type BudgetContextProps = {
     state: BudgetState,
-    dispatch: React.Dispatch<BudgetAction>
+    dispatch: React.Dispatch<BudgetAction>,
+    totalGastado: number,
+    disponibleBudget: number
+
 }
 //Define qué recibe el Provider
 //Esto significa:“Mi Provider va a envolver componentes, y esos componentes son children”
@@ -24,10 +27,13 @@ export const BudgetProvider = ({children}: BudgetProviderProps) => {
 //Nada nuevo aquí: state → datos actuales dispatch → forma de modificarlos budgetReducer → reglas initialState → inicio
     const [state, dispatch] = useReducer(budgetReducer, initialState);
 
+const totalGastado = state.expenses.reduce((total, expense) => expense.amount + total, 0)
+const disponibleBudget = state.budget - totalGastado
+
 //Esta es la magia real ✨ 👉 Le estás diciendo a React:
 //“Oye, cualquier componente que esté dentro de aquí, puede acceder a state y dispatch SIN props”
     return(
-        <BudgetContext.Provider value={{state, dispatch}}>
+        <BudgetContext.Provider value={{state, dispatch, totalGastado, disponibleBudget}}>
             {children}
         </BudgetContext.Provider>
     )
