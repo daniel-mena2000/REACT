@@ -10,6 +10,7 @@
 
 ![](img/gastos1.png)
 ![](img/gastos2.png)
+![](img/gastos4.png)
 ![](img/gastos3.png)
 
 # ------------- 🛠️ Implementación Técnica del Proyecto -------------
