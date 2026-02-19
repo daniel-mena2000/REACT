@@ -22,6 +22,9 @@
 
 - **Proyecto 4: Contador de calorías**: Una aplicación para rastrear y gestionar el consumo de calorías.
 
+- **Proyecto 5: Sistema de Gestión de Presupuesto (React + TypeScript)**: Una aplicación para gestionar presupuesto y registrar gastos, implementando estado global con Context API y useReducer.
+
+
 
 ## 🛠️ Tecnologías
 
