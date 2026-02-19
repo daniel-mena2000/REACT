@@ -12,7 +12,7 @@
 ![](img/gastos2.png)
 ![](img/gastos3.png)
 
-# -------------------------- 🛠️ Implementación Técnica del Proyecto -------------------------
+# ------------- 🛠️ Implementación Técnica del Proyecto -------------
 
 ## 🌐 1. Gestión de Estado Global con Context API y useReducer
 
