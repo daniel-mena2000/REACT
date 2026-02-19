@@ -12,7 +12,7 @@
 ![](img/gastos2.png)
 ![](img/gastos3.png)
 
-# 🛠️ Implementación Técnica del Proyecto
+# -------------------------- 🛠️ Implementación Técnica del Proyecto -------------------------
 
 ## 🌐 1. Gestión de Estado Global con Context API y useReducer
 
@@ -42,8 +42,11 @@ Configurar e integrar múltiples librerías (react-date-picker, react-calendar, 
 
 Implementar un sistema de filtrado dinámico que actualice la lista de gastos según la categoría seleccionada sin afectar el estado original.
 
+---
 
-# 🧠 Retos Técnicos Enfrentados
+
+
+# 🧠 ------------------ Retos Técnicos Enfrentados ----------------------
 
 ## 🔄 1. Conexión entre múltiples componentes y pantallas
 
