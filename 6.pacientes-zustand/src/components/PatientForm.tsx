@@ -1,22 +1,50 @@
 import { useForm } from "react-hook-form"
+import {toast}  from 'react-toastify'
 import { Error } from "./Error";
 import type { DraftPatient } from "../types";
 import { usePatientStore } from "../store/store";
+import { useEffect } from "react";
 
 
 export default function PatientForm() {
 
     const addPatient = usePatientStore(state => state.addPatient)
+    const activeId = usePatientStore(state => state.activeId)
+    const patients = usePatientStore(state => state.patients)
+    const updtaePatient = usePatientStore(state => state.updtaePatient)
+
 
 //El id se generara una vez agregado al state la info, en este caso como solo es validacion y se pasa a register, no tiene un id en los inputs que le podamos pasar, por eso es de tipo "DraftPatient"
 
-//La libreria nos da "reset" para reiniciar nuestro formulario
-    const {register, handleSubmit, formState: {errors}, reset} = useForm<DraftPatient>()
+//setValue te permite regresar y setear valores a tu formulario, nor sirve para pasar la info al editar
+    const {register, handleSubmit,setValue, formState: {errors}, reset} = useForm<DraftPatient>()
+
+    useEffect(() => {
+        if (activeId) {
+//Nos traemos al paciente que tenga el midmo ID que activeId, posicion[0] para que devuelva un objeto de la primera coincidencia, y no regrese un array igual
+            const activePatient = patients.filter(item => item.id === activeId)[0]
+            setValue('name', activePatient.name)
+            setValue('caretaker', activePatient.caretaker)
+            setValue('email', activePatient.email)
+            setValue('date', activePatient.date)
+            setValue('symptoms', activePatient.symptoms)
+
+        }
+    },[activeId])
 
 //"data" recuperara la info de lo que el usuario escribo en el formulario, esto evita usar UseState, es como un estado local
     const registerPatient = (data: DraftPatient) => {
-        addPatient(data)
+//Si esta activo activeId significa que estamos editando
+        if (activeId) {
+            updtaePatient(data)
+            toast.info('Paciente Editado con Exito')
 
+        }else{
+
+            addPatient(data)
+            toast.success('Paciente Registrado con Exito')
+        }
+//La libreria nos da "reset" para reiniciar nuestro formulario
         reset()
     }
 
