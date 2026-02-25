@@ -6,8 +6,10 @@
 ---
 
 ![](img/clima1.png)
+
+---
+
 ![](img/clima2.png)
-![](img/clima3.png)
 
 ---
 
