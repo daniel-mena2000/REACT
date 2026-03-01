@@ -1,6 +1,5 @@
 import { usePatientStore } from "../store/store"
 import { PatientDetails } from "./PatientDetails"
-import {toast}  from 'react-toastify'
 
 export function PatientList() {
 

@@ -5,24 +5,20 @@
 
 ¡Bienvenido a mi carpeta de proyectos! Aquí encontrarás aplicaciones básicas que he desarrollado mientras aprendo y practico React. Cada uno de estos proyectos es un paso en mi camino para dominar esta biblioteca.
 
+## 📂 Proyectos
+
+| Nombre | Descripción | Código | Web |
+|--------|------------|--------|-----|
+| Carrito de Compras (JavaScript) | Implementación inicial de un carrito de compras usando JavaScript puro. | [Repositorio]() | [Ver Web]() |
+| Carrito de Compras (TypeScript) | Versión mejorada del carrito implementada con TypeScript. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/1.2.carritoDe-Compras-TypeScript) | [Ver Web](https://dazzling-pixie-475b31.netlify.app) |
+| To-Do List (TypeScript) | Aplicación para gestionar tareas pendientes usando TypeScript. | [Repositorio]() | [Ver Web]() |
+| To-Do List (JavaScript) | Aplicación para gestionar tareas pendientes usando JavaScript. | [Repositorio]() | [Ver Web]() |
+| Calculadora de Propinas | Herramienta sencilla para calcular propinas. | [Repositorio]() | [Ver Web]() |
+| Contador de Calorías | Aplicación para rastrear y gestionar el consumo de calorías. | [Repositorio]() | [Ver Web]() |
+| Sistema de Gestión de Presupuesto (React + TypeScript) | Aplicación para gestionar presupuesto y registrar gastos usando Context API y useReducer. | [Repositorio]() | [Ver Web]() |
 
 
 
-## 📂 Contenido
-
-- **Proyecto 1: Carrito de compras básico (JavaScript)**: Una implementación inicial de un carrito de compras usando JavaScript.
-
-- **Proyecto 1.2: Carrito de compras (TypeScript)**: Una versión mejorada del carrito de compras implementada con TypeScrip
-
-- **Proyecto 2: To-Do List (TypeScript)**: Una aplicación para gestionar tareas pendientes.
-
-- **Proyecto 2.1: To-Do List (JavaScript)**: Una aplicación para gestionar tareas pendientes.
-
-- **Proyecto 3: Calculadora de propinas**: Una herramienta sencilla para calcular propinas.
-
-- **Proyecto 4: Contador de calorías**: Una aplicación para rastrear y gestionar el consumo de calorías.
-
-- **Proyecto 5: Sistema de Gestión de Presupuesto (React + TypeScript)**: Una aplicación para gestionar presupuesto y registrar gastos, implementando estado global con Context API y useReducer.
 
 
 
