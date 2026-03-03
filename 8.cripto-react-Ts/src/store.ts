@@ -31,6 +31,7 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
     const crytocurrencies = await getCryptos()
 
     set(() => ({
+    //Le asignamos a el estado "crytocurrencies" el valor de la respuesta ya validada en "CryptoService" en este caso le colocamos el mismo nombre y lo podemos colocar una sola vez.
             crytocurrencies: crytocurrencies
         }))
     },
@@ -45,10 +46,10 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
         //console.log(result);
 
         set(() => ({
+    //Asignamos a nuestro estado de result, la respuesta en est caso igual se llama result, y lo podemos dejar igual
             result,
             loading: false
         }))
-
     }
 
 
