@@ -81,3 +81,32 @@ body{
     background: -webkit-linear-gradient(90deg, #964292,#ee731f);
     background: linear-gradient(90deg, #964292,#ee731f);
 }
+
+.result-wrapper {
+    margin-top: 5rem;
+   
+}
+
+.result-wrapper h2{
+    text-align: center;
+}
+
+.result {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.result img {
+    width: 100%;
+}
+
+.result p {
+    margin: 0 0 1rem;
+    font-size: 1.6rem;
+}
+
+.result span {
+    font-weight: 700;
+}
