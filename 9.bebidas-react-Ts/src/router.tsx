@@ -1,0 +1,17 @@
+//BrowserRouter nos va a permitir crear nuestro router
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { IndexPage } from "./views/IndexPage"
+import { FavoritesPage } from "./views/FavoritesPage"
+import { Layout } from "./layouts/Layout"
+export function AppRouter() {
+    return(
+        <BrowserRouter>
+            <Routes>
+                <Route element={<Layout />} >
+                    <Route index element={<IndexPage />} />
+                    <Route path="/favorites" element={<FavoritesPage />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    )
+}
