@@ -19,6 +19,7 @@
 | Gestión de Pacientes (React + Zustand) | Aplicación para administrar pacientes usando Zustand para el manejo de estado global. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/6.pacientes-zustand) | [Visitar](https://celebrated-squirrel-719970.netlify.app) |
 | Consulta del Clima (React + TypeScript) | Aplicación que permite buscar el clima por ciudad mediante el consumo de una API externa, implementando manejo de estado y peticiones HTTP. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/7.clima-React-Ts) | [Visitar](https://bejewelled-marshmallow-cce0ee.netlify.app) |
 | Consulta de Criptomonedas (React + TypeScript + Zustand + Zod) | Aplicación que consulta una API de criptomonedas para obtener precios actualizados y realizar conversiones entre monedas, implementando manejo de estado global con Zustand y tipado con TypeScript. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/8.cripto-react-Ts) | [Visitar](https://boisterous-taiyaki-129f69.netlify.app) |
+| Buscador de Cócteles (React + TypeScript + Zustand + Zod + React Router + Tailwind) | Aplicación SPA que permite buscar cócteles por categoría e ingrediente consumiendo la API de TheCocktailDB. Implementa manejo de estado global con Zustand mediante slices, validación de datos con Zod, rutas con React Router y persistencia de favoritos en localStorage. | [Repositorio](https://github.com/TU-USUARIO/TU-REPO) | [Visitar](https://TU-DEPLOY) |
 
 
 
