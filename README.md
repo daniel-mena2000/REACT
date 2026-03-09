@@ -18,7 +18,7 @@
 | Sistema de Gestión de Presupuesto (React + TypeScript) | Aplicación para gestionar presupuesto y registrar gastos usando Context API y useReducer. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/5.control-gastos-contextapi) | [Visitar](https://exquisite-faun-5e43de.netlify.app)
 | Gestión de Pacientes (React + Zustand) | Aplicación para administrar pacientes usando Zustand para el manejo de estado global. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/6.pacientes-zustand) | [Visitar](https://celebrated-squirrel-719970.netlify.app) |
 | Consulta del Clima (React + TypeScript) | Aplicación que permite buscar el clima por ciudad mediante el consumo de una API externa, implementando manejo de estado y peticiones HTTP. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/7.clima-React-Ts) | [Visitar](https://bejewelled-marshmallow-cce0ee.netlify.app) |
-| Consulta de Criptomonedas (React + TypeScript + Zustand) | Aplicación que consulta una API de criptomonedas para obtener precios actualizados y realizar conversiones entre monedas, implementando manejo de estado global con Zustand y tipado con TypeScript. | [Repositorio](LINK) | [Visitar](https://boisterous-taiyaki-129f69.netlify.app) |
+| Consulta de Criptomonedas (React + TypeScript + Zustand + Zod) | Aplicación que consulta una API de criptomonedas para obtener precios actualizados y realizar conversiones entre monedas, implementando manejo de estado global con Zustand y tipado con TypeScript. | [Repositorio](https://github.com/daniel-mena2000/REACT/tree/main/8.cripto-react-Ts) | [Visitar](https://boisterous-taiyaki-129f69.netlify.app) |
 
 
 
