@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react"
 import { NavLink, useLocation } from "react-router-dom"
 import { useAppStore } from "../stores/useAppStore"
-import { ErrorMessage } from "./ErrorMessage"
+import {toast}  from 'react-toastify'
+
 
 export function Header() {
 
@@ -26,7 +27,6 @@ export function Header() {
         category: ''
     })
 
-    const [error, setError] = useState('')
 
     const handleOnchange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
         setRecipesInfo({
@@ -40,11 +40,16 @@ export function Header() {
         const validar = Object.values(recipesInfo).includes('')
 
         if (validar) {
-            setError(error)
+            toast.warning('Rellene los campos')
             return
         }
 
         searchRecipes(recipesInfo)
+
+        setRecipesInfo({
+        ingredient: '',
+        category: ''
+        })
     }
 
 //Si estamos en inicio mostramos la imagen, y en favoritos solo el color de fondo
@@ -131,6 +136,7 @@ export function Header() {
               focus:border-emerald-500
               transition-all duration-300"
               onChange={handleOnchange}
+              value={recipesInfo.ingredient}
             />
           </div>
 
@@ -153,6 +159,7 @@ export function Header() {
               focus:border-emerald-500
               transition-all duration-300"
               onChange={handleOnchange}
+              value={recipesInfo.category}
             >
               <option className="bg-emerald-950" value="">-- Seleccione --</option>
              {categories.drinks.map(item => (

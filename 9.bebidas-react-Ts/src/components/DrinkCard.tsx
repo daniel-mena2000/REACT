@@ -10,7 +10,7 @@ export function DrinkCard({ drink }: DrinkCardProps) {
     const selectRecipe = useAppStore((state) => state.selectRecipe)
 
   return (
-    <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg shadow-black/40 border border-white/5 hover:scale-[1.02] hover:shadow-xl transition-all duration-300">
+    <div className="bg-[#1a1a1a] rounded-2xl overflow-hidden shadow-lg shadow-black/40 border border-white/5 hover:scale-[1.02] hover:shadow-xl transition-all duration-300 md:m-2">
 
       <div className="overflow-hidden">
         <img

@@ -9,7 +9,7 @@ export function IndexPage() {
     const hasDrinks = useMemo(() => drinks.drinks.length > 0 ,[drinks])
     return(
         <>
-        <h1 className="text-center text-3xl md:text-4xl font-black bg-linear-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">
+        <h1 className="text-center text-3xl md:text-4xl font-black     ">
             Descubre tu próxima bebida favorita
         </h1>
 
@@ -20,7 +20,7 @@ export function IndexPage() {
 </div>
 
     {hasDrinks ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 my-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 my-10">
                 {drinks.drinks.map(item => (
                     <DrinkCard
                     key={item.idDrink}
