@@ -9,8 +9,7 @@ export function CryptoPriceDisplay() {
 //Si los valores del nuestro state, son vacios no mostramos nada
     const hasResult = Object.values(result).includes('')
 
-//Lo que nos manda la imagen es la media no la url completa ejemplo: /media/2332342/btc.png, y esta viene de la url de la API por lo tanto asi la colocamos para que la pueda mostrar
-//Primero verificamos si loading es True y muestra el spiner, cuando cambie a false y vea que el resultado no esta vacio, muestra la info
+
     return(
         <div className="result-wrapper">
 

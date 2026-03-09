@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+<p align="center">
+<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" alt="TypeScript" title="TypeScript" width="36" height="36" /></a><a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" alt="React" title="React" width="36" height="36" /></a><a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" alt="TailwindCSS" title="TailwindCSS" width="36" height="36" /></a>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" height="40" alt="npm logo"  />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+![](img/cripto1.png)
+![](img/cripto2.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# -- 🟩 Implementación Técnica del Proyecto --
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### ¿Qué hace?
 
-## Expanding the ESLint configuration
+Permite al usuario seleccionar un par de divisas (moneda fiat + criptomoneda) y consultar en tiempo real el precio actual de esa criptomoneda.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Funcionalidad principal:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+•  Carga las top 20 criptomonedas por capitalización de mercado desde la API de CryptoCompare
+•  El usuario elige una moneda fiat (USD, MXN, EUR, GBP) y una criptomoneda
+•  Al hacer clic en "Cotizar" muestra: precio actual, máximo/mínimo del día, cambio porcentual en 24h e imagen de la cripto
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Stack técnico:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+•  React 19 con TypeScript para la UI
+•  Zustand para el manejo de estado global
+•  Axios para las peticiones HTTP a la API
+•  Zod para validación de esquemas de datos de la API
+•  Vite como bundler
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Estructura:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+•  components/ — Formulario de búsqueda y display de precios
+•  services/ — Llamadas a la API de CryptoCompare
+•  store.ts — Estado global con Zustand
+•  schema/ — Validación de respuestas con Zod
+•  data/ — Lista estática de monedas fiat disponibles
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+# -- 🧩 Retos Técnicos Enfrentados y Aprendisaje --
+
+Este proyecto me ayudó a profundizar en el consumo de APIs dentro de aplicaciones React y a reforzar conceptos importantes relacionados con la gestión de datos y la arquitectura del proyecto.
+
+Uno de los principales retos fue trabajar nuevamente con **formularios y validación de datos**, especialmente al manejar información proveniente de una API externa. Para evitar errores en tiempo de ejecución, se implementó **Zod** para definir esquemas que validan la estructura de los datos recibidos antes de utilizarlos dentro de la aplicación.
+
+También se volvió a utilizar **Zustand** para el manejo del estado global, lo que permitió compartir información entre distintos componentes de forma sencilla. Esto incluye datos como las criptomonedas disponibles, las divisas seleccionadas por el usuario y el resultado de la cotización.
+
+El uso de **TypeScript** fue clave para definir correctamente los tipos de los datos recibidos desde la API. Al combinar TypeScript con la validación de Zod, se logró mantener un flujo de datos más consistente, seguro y tipado dentro de la aplicación.
+
+Finalmente, para mantener el proyecto organizado y escalable, se separaron claramente las responsabilidades del código en diferentes capas: componentes de interfaz de usuario, servicios encargados de las llamadas a la API, manejo del estado global con Zustand y validación de datos mediante esquemas con Zod.

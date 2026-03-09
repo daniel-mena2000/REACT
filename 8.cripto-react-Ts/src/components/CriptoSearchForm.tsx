@@ -56,7 +56,7 @@ export default function CriptoSearchForm() {
 
 
             <div className="field">
-                <label htmlFor="criptocurrency"></label>
+                <label htmlFor="criptocurrency">CriptoMoneda: </label>
                 <select name="criptocurrency" id="criptocurrency"
                  onChange={handleChange}
                  value={pair.criptocurrency}
