@@ -1,0 +1,21 @@
+.index_page_title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+
+}
+
+
+
+.index_page_title span{
+    color: goldenrod;
+    padding: 10px;
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+.empty_title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+}
