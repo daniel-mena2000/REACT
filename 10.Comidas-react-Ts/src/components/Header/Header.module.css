@@ -1,0 +1,122 @@
+
+header{
+
+  background-image: url("/comidas.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.logo{
+    width: 200px;
+}
+
+.section_nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_sec {
+    margin: 40px;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.navLink_color {
+    color: white;
+    text-decoration: none;
+}
+.navLink_item_active {
+    color: gold;
+    padding: 25px;
+    text-decoration: none;
+}
+.navLink_item,
+.navLink_item_active {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navLink_color,
+.navLink_item_active {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.navLink_item_favorites{
+    color: gold;
+    text-decoration: none;
+
+
+}
+
+.h1_form{
+    color: #fff;
+    margin-bottom: 100px;
+
+}
+
+.section_form {
+     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section_p {
+    color: #d4af37;
+    font-size: 30;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+form {
+    width: 400px;
+    padding: 2rem;
+    border-radius: 12px;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin-bottom: 50px;
+}
+
+form label {
+    font-size: 0.9rem;
+    color: #d4af37;
+}
+form select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d4af37;
+    background: #0f0f0f;
+    color: white;
+    outline: none;
+
+}
+
+.form button {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #d4af37;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form button:disabled {
+    background: #d4af37;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form button:hover {
+    background: #f1c84c;
+}
