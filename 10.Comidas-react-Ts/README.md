@@ -7,7 +7,65 @@
 ---
 
 ![](assets/comidas1.png)
+
+---
+
 ![](assets/comidas2.png)
+
+---
+
 ![](assets/comidas3.png)
+
+---
+
 ![](assets/comidas4.png)
+
+---
+
 ![](assets/comidas5.png)
+
+---
+# -- 🟩 Implementación del Proyecto --
+
+## 📱 Estructura:
+
+- Página principal: filtros y búsqueda de bebidas
+- Página favoritos: tus bebidas guardadas
+- Página IA: generador de recetas asistido
+
+## 🔍 Función 1: Explorador de Bebidas (TheMealDB API)
+
+- Busca bebidas por región (país)
+- Busca bebidas por categoría (tipo de bebida)
+- Ve detalles: ingredientes, medidas, instrucciones, video
+- Marca favoritas que se guardan localmente
+
+## 🤖 Función 2: Generador IA (OpenRouter API)
+
+- Escribe: ingredientes, antojo o tipo de comida
+- La IA genera 3 recetas diferentes automáticamente
+- Respuesta en tiempo real (streaming)
+- Usa modelos gratuitos de OpenRouter
+
+## Tecnología:
+
+- React + TypeScript
+- Tailwind CSS para estilos
+- Vite como bundler
+- Integración con OpenRouter API para generar recetas con IA
+
+
+## Estado y Validación:
+
+- Zustand 5.0.11 (gestión de estado)
+- Zod 4.3.6 (validación de esquemas)
+
+## UI y Componentes:
+
+- Radix UI (React Dialog) 1.1.15
+- Lucide React 0.577.0 (iconos)
+
+## IA y API:
+
+- @openrouter/ai-sdk-provider 2.3.1
+- AI (Vercel AI SDK) 6.0.116
