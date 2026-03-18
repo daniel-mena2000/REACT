@@ -36,7 +36,7 @@
 ## 🔍 Función 1: Explorador de Comidas (TheMealDB API)
 
 - Busca platillos por región (país)
-- Busca platillos por categoría (tipo de bebida)
+- Busca platillos por categoría (tipo de comida)
 - Ve detalles: ingredientes, país, instrucciones, video
 - Marca favoritas que se guardan localmente
 
