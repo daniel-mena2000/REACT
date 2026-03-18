@@ -6,8 +6,8 @@
 
 ---
 
-![](img/comidas1.png)
-![](img/comidas2.png)
-![](img/comidas3.png)
-![](img/comidas4.png)
-![](img/comidas5.png)
+![](assets/comidas1.png)
+![](assets/comidas2.png)
+![](assets/comidas3.png)
+![](assets/comidas4.png)
+![](assets/comidas5.png)
