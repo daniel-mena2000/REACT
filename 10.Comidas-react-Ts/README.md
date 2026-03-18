@@ -29,15 +29,15 @@
 
 ## 📱 Estructura:
 
-- Página principal: filtros y búsqueda de bebidas
-- Página favoritos: tus bebidas guardadas
+- Página principal: filtros de comidas con región o categoría
+- Página recetas guardadas: tus platillos favoritos guardados
 - Página IA: generador de recetas asistido
 
-## 🔍 Función 1: Explorador de Bebidas (TheMealDB API)
+## 🔍 Función 1: Explorador de Comidas (TheMealDB API)
 
-- Busca bebidas por región (país)
-- Busca bebidas por categoría (tipo de bebida)
-- Ve detalles: ingredientes, medidas, instrucciones, video
+- Busca platillos por región (país)
+- Busca platillos por categoría (tipo de bebida)
+- Ve detalles: ingredientes, país, instrucciones, video
 - Marca favoritas que se guardan localmente
 
 ## 🤖 Función 2: Generador IA (OpenRouter API)
