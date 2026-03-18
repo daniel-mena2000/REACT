@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react"
 import { useLocation, NavLink } from "react-router-dom"
 import styles  from './Header.module.css'
 import { useAppStore } from "../../stores/useAppStore"
-import { Home, Bookmark } from "lucide-react"
+import { Home, Bookmark, Bot  } from "lucide-react"
 
 export function Header() {
 
@@ -82,6 +82,13 @@ export function Header() {
                             isActive ? styles.navLink_item_active : styles.navLink_color
                         }>
                                 <Bookmark size={18} />   Recetas Guardadas
+                        </NavLink>
+
+
+                         <NavLink to="/generate-ai" className={({isActive }) =>
+                            isActive ? styles.navLink_item_active : styles.navLink_color
+                        }>
+                                <Bot size={18} />   Generar Receta con IA
                         </NavLink>
                     </nav>
 

@@ -1,5 +1,5 @@
 import type { MealsStrRegionType, RecipeMealsType } from "../types"
-import { RegionsSchema, MealsRegionArrayFilterSchema, RecipeMealsSchema, RecipeMealsResponseSchema } from "../utils/meals-schema"
+import { RegionsSchema, MealsRegionArrayFilterSchema, RecipeMealsResponseSchema } from "../utils/meals-schema"
 import { CategorySchema } from "../utils/meals-schema"
 import { fetchAndValidate } from "../helpers/apiCliente"
 
@@ -33,7 +33,3 @@ export async function getRecipeMeals(id: RecipeMealsType['idMeal']) {
 
   return data.meals[0]
 }
-
-
-
-
