@@ -7,8 +7,12 @@
     margin: 50px;
 }
 .titleFav{
-    text-align: center;
-    margin: 20px;
+    font-size: 2.75rem;
+  line-height: 1;
+  font-weight: 800;
+  text-align: center;
+  margin: 50px;
+  color: #d4af37;
 }
 
 

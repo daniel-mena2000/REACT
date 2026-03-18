@@ -2,6 +2,7 @@ import {BrowserRouter, Routes, Route } from "react-router-dom";
 import { FavoritesPage } from "./views/FavoritesPage";
 import { IndexPage } from "./views/IndexPage";
 import { Layout } from "./layout/Layout";
+import GenerateAI  from "./views/GenerateAI";
 
 
 export function AppRouter() {
@@ -11,6 +12,7 @@ export function AppRouter() {
                     <Route element={<Layout/>}>
                         <Route index element={ <IndexPage/> } />
                         <Route path="/favorites"  element={ <FavoritesPage/> }/>
+                        <Route path="/generate-ai"  element={ <GenerateAI/> }/>
                     </Route>
                 </Routes>
         </BrowserRouter>
