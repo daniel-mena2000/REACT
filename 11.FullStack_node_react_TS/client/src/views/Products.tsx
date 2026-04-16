@@ -1,5 +1,18 @@
-import { Link } from "react-router-dom"
+import { Link, useLoaderData} from "react-router-dom"
+import { getProducts } from "../services/ProductServer";
+import ProductDetails from "../components/ProductDetails";
+import type { ProductType } from "../types";
+
+export async function loader() {
+    const products = await getProducts()
+    return products
+
+}
+
 export default function Products() {
+//usamos useLoaderData para traer los datos de la funcion loader al componente
+//Forzamos a que Ts tome "products" como un array para poder tiparlo y recorrerlo
+    const products = useLoaderData() as ProductType[]
 
     return(
         <>
@@ -11,6 +24,30 @@ export default function Products() {
                     Agregar Producto
                 </Link>
             </div>
+
+            <div className="p-2">
+  <table className="w-full mt-5 table-auto">
+    <thead className="bg-slate-800 text-white">
+        <tr>
+            <th className="p-2">Producto</th>
+            <th className="p-2">Precio</th>
+            <th className="p-2">Disponibilidad</th>
+            <th className="p-2">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {products.map(item => (
+            <ProductDetails
+                key={item.id}
+                item={item}
+            />
+        ))}
+
+    </tbody>
+  </table>
+</div>
+
+
         </>
     )
 }

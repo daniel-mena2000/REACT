@@ -16,10 +16,13 @@
   "type": "commonjs",
   "dependencies": {
     "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
     "colors": "^1.4.0",
+    "cors": "^2.8.6",
     "dotenv": "^17.4.1",
     "express": "^5.2.1",
     "express-validator": "^7.3.2",
+    "morgan": "^1.10.1",
     "nodemon": "^3.1.14",
     "pg": "^8.20.0",
     "pg-hstore": "^2.3.4",
@@ -31,6 +34,7 @@
     "typescript": "^6.0.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/jest": "^29.5.14",
     "@types/supertest": "^7.2.0",
     "@types/swagger-jsdoc": "^6.0.4",
