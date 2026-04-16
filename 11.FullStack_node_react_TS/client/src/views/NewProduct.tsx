@@ -1,6 +1,7 @@
 import { Link, Form, useActionData,redirect , type ActionFunctionArgs } from "react-router-dom"
 import { ErrorMessage } from "../components/ErrorMessage"
 import { addProduct } from "../services/ProductServer"
+import { ProductForm } from "../components/ProductForm"
 
 
 export async function action({request}: ActionFunctionArgs) {
@@ -43,31 +44,13 @@ export default function NewProduct() {
                 method="POST"
             >
 
-                <div className="mb-4">
-                    <label className="text-gray-800" htmlFor="name">Nombre Producto:</label>
-                    <input
-                        id="name"
-                        type="text"
-                        className="mt-2 block w-full p-3 rounded-md  border border-indigo-500/20 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500 transition"
-                        placeholder="Nombre del Producto"
-                        name="name"
-                    />
-                </div>
+               <ProductForm/>
 
-                <div className="mb-4">
-                    <label className="text-gray-800" htmlFor="price">Precio:</label>
-                        <input
-                            id="price"
-                            type="number"
-                            className="mt-2 block w-full p-3 rounded-md  border border-indigo-500/20 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500 transition"
-                            placeholder="Precio Producto. ej. 200, 300"
-                            name="price"
-                    />
-                </div>
+
                 <input
                     type="submit"
                    className="w-full p-3 rounded-md font-bold text-lg text-white bg-linear-to-r from-indigo-600 to-indigo-800 hover:opacity-90 transition cursor-pointer"
-                   value={'Agregar Producto'}
+                   value={'AGREGAR PRODUCTO'}
                 />
                 </Form>
         </>

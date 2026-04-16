@@ -1,12 +1,20 @@
-import { Link, useLoaderData} from "react-router-dom"
+import { Link, useLoaderData, type ActionFunctionArgs} from "react-router-dom"
 import { getProducts } from "../services/ProductServer";
 import ProductDetails from "../components/ProductDetails";
 import type { ProductType } from "../types";
+import { updateProductAvailability } from "../services/ProductServer";
 
 export async function loader() {
     const products = await getProducts()
     return products
+}
 
+export async function action({request}: ActionFunctionArgs) {
+   const data = Object.fromEntries(await request.formData())
+
+   await updateProductAvailability(Number(data.id))
+
+//Ya no usamos redirect gracias a const fetcher = useFetcher() en "ProductDetails"
 }
 
 export default function Products() {
@@ -27,7 +35,7 @@ export default function Products() {
 
             <div className="p-2">
   <table className="w-full mt-5 table-auto">
-    <thead className="bg-slate-800 text-white">
+    <thead className="bg-teal-900 text-white">
         <tr>
             <th className="p-2">Producto</th>
             <th className="p-2">Precio</th>

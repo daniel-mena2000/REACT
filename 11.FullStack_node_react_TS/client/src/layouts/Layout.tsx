@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 export default function Layout() {
     return(
         <>
-        <header className="bg-slate-800">
+        <header className="bg-teal-900">
             <div className="mx-auto max-w-6xl py-10">
                 <h1 className="text-4xl font-extrabold text-white ">
                     Administrador de Productos
