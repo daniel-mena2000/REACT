@@ -2,6 +2,7 @@ import { Link, Form, useActionData,redirect , type ActionFunctionArgs, type Load
 import { ErrorMessage } from "../components/ErrorMessage"
 import { getProductsById } from "../services/ProductServer";
 import { updateProduct } from "../services/ProductServer";
+import { FaHome } from "react-icons/fa";
 import type { ProductType } from "../types";
 import { ProductForm } from "../components/ProductForm";
 
@@ -56,7 +57,8 @@ export default function EditProduct() {
                 <h2 className="text-4xl font-black text-slate-500">Editar Producto</h2>
                 <Link
                 to='/'
-                className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-700">
+                  className="flex items-center justify-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-95">
+                    <FaHome />
                     Inicio
                 </Link>
             </div>
@@ -84,9 +86,9 @@ export default function EditProduct() {
                     </select>
                 </div>
 
-                <input
+                 <input
                     type="submit"
-                   className="w-full p-3 rounded-md font-bold text-lg text-white bg-linear-to-r from-indigo-600 to-indigo-800 hover:opacity-90 transition cursor-pointer"
+                   className="w-full p-3 rounded-md font-bold text-lg text-white bg-linear-to-r from-blue-500 to-blue-800 hover:opacity-90 transition cursor-pointer"
                    value={'GUARDAR CAMBIOS'}
                 />
                 </Form>

@@ -1,6 +1,7 @@
 import { Link, useLoaderData, type ActionFunctionArgs} from "react-router-dom"
 import { getProducts } from "../services/ProductServer";
 import ProductDetails from "../components/ProductDetails";
+import { IoMdAddCircle } from "react-icons/io";
 import type { ProductType } from "../types";
 import { updateProductAvailability } from "../services/ProductServer";
 
@@ -26,16 +27,17 @@ export default function Products() {
         <>
             <div className="flex justify-between">
                 <h2 className="text-4xl font-black text-slate-500">Productos</h2>
-                <Link
-                to='/productos/nuevo'
-                className="rounded-md bg-indigo-600 p-3 text-sm font-bold text-white shadow-sm hover:bg-indigo-700">
-                    Agregar Producto
+                <Link to="/productos/nuevo"
+                    className="flex items-center justify-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
+                >
+                    <IoMdAddCircle className="text-lg" />
+                        Agregar Producto
                 </Link>
             </div>
 
             <div className="p-2">
   <table className="w-full mt-5 table-auto">
-    <thead className="bg-teal-900 text-white">
+    <thead className="bg-blue-500 text-white">
         <tr>
             <th className="p-2">Producto</th>
             <th className="p-2">Precio</th>

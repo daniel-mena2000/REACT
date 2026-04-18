@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom"
+import { LiaStoreAltSolid } from "react-icons/lia";
 
 export default function Layout() {
     return(
         <>
-        <header className="bg-teal-900">
-            <div className="mx-auto max-w-6xl py-10">
-                <h1 className="text-4xl font-extrabold text-white ">
-                    Administrador de Productos
+        <header className="bg-blue-500">
+            <div className="mx-auto max-w-6xl py-10 flex justify-center">
+
+                <h1 className="text-4xl font-extrabold text-white flex items-center gap-2 ">
+                    <LiaStoreAltSolid />
+                     Administrador de Productos
                 </h1>
             </div>
         </header>

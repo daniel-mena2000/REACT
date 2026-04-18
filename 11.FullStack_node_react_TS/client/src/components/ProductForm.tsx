@@ -12,8 +12,8 @@ export function ProductForm({product}: ProductFormType) {
                     <input
                         id="name"
                         type="text"
-                        className="mt-2 block w-full p-3 rounded-md  border border-indigo-500/20 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500 transition"
-                        placeholder="Nombre del Producto"
+                        className="mt-2 block w-full p-3 rounded-md  border border-blue-500/20 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-500 transition"
+                        placeholder="Nombre del Producto.ej. Monitor, Mause, Teclado"
                         name="name"
                         defaultValue={product?.name}
                     />
@@ -24,7 +24,7 @@ export function ProductForm({product}: ProductFormType) {
                         <input
                             id="price"
                             type="number"
-                            className="mt-2 block w-full p-3 rounded-md  border border-indigo-500/20 focus:outline-none focus:border-indigo-400 focus:ring-1 focus:ring-indigo-500 transition"
+                            className="mt-2 block w-full p-3 rounded-md  border border-blue-500/20 focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-500 transition"
                             placeholder="Precio Producto. ej. 200, 300"
                             name="price"
                             defaultValue={product?.price}

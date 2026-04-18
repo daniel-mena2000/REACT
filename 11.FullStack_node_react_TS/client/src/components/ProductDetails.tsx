@@ -1,5 +1,8 @@
 import type { ProductType } from "../types"
 import { formatCurrency } from "../utils"
+import { FaEdit } from "react-icons/fa";
+import { FiCornerDownRight } from "react-icons/fi";
+import { MdDeleteForever } from "react-icons/md";
 import { useNavigate, Form, type ActionFunctionArgs, redirect, useFetcher } from "react-router-dom" // Podemos usar Link o useNavigater, este ultimo nos permite llamarlo antes o despues del return Link solo en el return
 import { deleteProduct } from "../services/ProductServer"
 import { FaCheckCircle } from "react-icons/fa";
@@ -30,8 +33,11 @@ export default function ProductDetails({item}: ProductDeatilsProps) {
     const isAvailability = item.availability
     return(
          <tr className="border-b ">
-        <td className="p-3 text-lg text-gray-800">
-            {item.name}
+       <td className="p-3 text-lg text-gray-800">
+            <div className="flex items-center gap-2">
+                <FiCornerDownRight className="text-gray-400" />
+                    {item.name}
+            </div>
         </td>
         <td className="p-3 text-lg text-gray-800">
             {formatCurrency(item.price)}
@@ -55,11 +61,12 @@ export default function ProductDetails({item}: ProductDeatilsProps) {
 
         <td className="p-3 text-lg text-gray-800 ">
             <div className="flex gap-2 items-center">
-{/* dentro de navigate nos permitira usar un state, y toda la informacion de ese state se pasara a la ruta que tenga ese navigate, en este caso le pasaremos toda la informacion del "item" y en el otro lado usaremos useLocation para manipular item*/}
-                <button onClick={() => navigate(`/productos/${item.id}/editar`)}
-                className="bg-indigo-600 text-white rounded-lg w-full p-2 uppercase font-bold text-xs"
-
+{/* dentro de navigate nos permitira usar un state, y toda la informacion de ese state se pasara a la ruta que tenga ese navigate, en este caso le pasaremos toda la informacion del "item" y en el otro lado usaremos useLocation para manipular item <- ESTO YA NO SE APLICO*/}
+               <button
+                    onClick={() => navigate(`/productos/${item.id}/editar`)}
+                    className="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-lg bg-amber-500 text-white text-sm font-semibold uppercase transition hover:bg-orange-400 active:scale-95"
                     >
+                    <FaEdit className="text-sm" />
                     Editar
                 </button>
 {/**Para eliminar creamos el Form de boton, en este caso le pasaremos el action aqui 👉 React Router:
@@ -75,9 +82,13 @@ Vuelve a cargar el loader de /*/}
                     }
                  }}
                 >
-                        <input type="submit" value='Eliminar'
-                        className="bg-red-500 text-white rounded-lg w-full p-2 uppercase font-bold text-xs"
-                        />
+                       <button
+  type="submit"
+  className="flex items-center justify-center gap-2 w-full px-3 py-2 rounded-lg bg-red-500 text-white text-sm font-semibold uppercase hover:bg-red-600 transition"
+>
+  <MdDeleteForever className="text-base" />
+  Eliminar
+</button>
                 </Form>
             </div>
         </td>
