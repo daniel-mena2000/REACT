@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Plus Jakarta Sans;
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("./assets/Fonts/PlusJakartaSans-VariableFont_wght.ttf") format("woff2");
+}
+
+   @theme {
+    --color-red: hsl(0, 100%, 50%);
+    --color-white: hsl(0, 0%, 100%);
+
+    --color-slate-100: hsl(210, 40%, 96%);
+    --color-slate-300: hsl(212, 32%, 85%);
+    --color-slate-500: hsl(215, 16%, 47%);
+    --color-slate-700: hsl(215, 25%, 27%);
+    --color-slate-900: hsl(222, 47%, 11%);
+
+    --color-lime: hsl(61, 70%, 52%);
+
+    --font-Plus-Jakarta-Sans: "Plus Jakarta Sans"
+}
+
+body{
+    @apply bg-slate-100 font-Plus-Jakarta-Sans flex justify-center
+}
